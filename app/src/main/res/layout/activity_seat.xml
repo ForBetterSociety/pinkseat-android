@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hyeong.pinkseat.SeatActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="좌석 현황 "
+                android:textColor="@color/colorBlack"
+                android:textSize="30dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="10dp"
+            android:background="@color/colorBlack" />
+
+        <!--좌석 현황도-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--좌석 현황도의 주석-->
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="30dp"
+                android:src="@drawable/note_image"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"/>
+
+        <!--구간 번호 윗부분-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/section4_1_image" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="265dp"
+                android:src="@drawable/section4_2_image" />
+
+        </LinearLayout>
+
+        <!--좌석-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp">
+
+            <!--좌석 현황도 윗부분-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_P41"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorFullSeat"
+                    android:text="P41" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:id="@+id/btn_P42"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/colorEmptySeat"
+                    android:text="P42" />
+
+            </LinearLayout>
+
+            <!--방향 이미지-->
+            <ImageView
+                android:id="@+id/iv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/direction_image" />
+
+            <!--좌석 현황도 아래부분-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btn_P43"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorEmptySeat"
+                    android:text="P43" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="1dp"
+                    android:background="@color/colorNormalSeat" />
+
+                <Button
+                    android:id="@+id/btn_P44"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@color/colorEmptySeat"
+                    android:text="P44" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--구간 번호 아래부분-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/section4_1_image" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="265dp"
+                android:src="@drawable/section4_2_image" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

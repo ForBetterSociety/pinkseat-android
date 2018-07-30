@@ -20,7 +20,10 @@
         <activity
             android:name=".Main2Activity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".SubwayActivity" />
+        <activity android:name=".SeatActivity" />
+        <activity android:name=".MySeatActivity"></activity>
     </application>
 
 </manifest>

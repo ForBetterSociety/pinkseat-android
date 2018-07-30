@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+
+    <!--좌석 현황 색상-->
+    <color name="colorFullSeat">#e26c74</color>
+    <color name="colorEmptySeat">#eeaaaf</color>
+    <color name="colorNormalSeat">#afabab</color>
+
 </resources>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hyeong.pinkseat.SubwayActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+    <!--탭 메뉴-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TabHost
+            android:id="@+id/tabhost1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--TabWidget의 id는 반드시 @android:id/tabs임-->
+                <TabWidget
+                    android:id="@android:id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <!--FrameLayout의 id는 반드시 @android:id/tabcontent임-->
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!--1번째 페이지-->
+                        <LinearLayout
+                            android:id="@+id/content1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <!--'수원역' 이미지-->
+                            <ImageView
+                                android:id="@+id/iv_1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/station_icon" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="시간표 리스트뷰 자리(소요산행)" />
+
+
+                        </LinearLayout>
+
+                        <!--2번째 페이지-->
+                        <LinearLayout
+                            android:id="@+id/content2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <!--'수원역' 이미지-->
+                            <ImageView
+                                android:id="@+id/iv_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/station_icon" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="시간표 리스트뷰 자리(인천/신창행)" />
+
+
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </TabWidget>
+
+            </LinearLayout>
+
+        </TabHost>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorBlack"/>
+
+    <!--스피너-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tx_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="승강장 번호 : "/>
+        <Spinner
+            android:id="@+id/spin_plat_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tx_3">
+        </Spinner>
+        <TextView
+            android:id="@+id/tx_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="구간 번호 : "
+            android:layout_toRightOf="@+id/spin_plat_num"
+            android:layout_marginLeft="10dp"/>
+        <Spinner
+            android:id="@+id/spin_plat_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tx_4">
+        </Spinner>
+    </RelativeLayout>
+
+    <!--버튼-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/btn_Ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="조회"
+            android:layout_marginRight="60dp"
+            />
+        <Button
+            android:id="@+id/btn_No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="취소"
+            android:layout_toRightOf="@+id/btn_Ok" />
+
+    </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
