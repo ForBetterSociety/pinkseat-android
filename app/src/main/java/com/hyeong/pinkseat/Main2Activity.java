@@ -88,11 +88,14 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
         }
+
+        //menu폴더 - activity_main2_drawer.xml 의 주석처리로 인해 오류가 생겨 주석 처리함 (지영)
+        //else if (id == R.id.nav_share) {
+
+        //} else if (id == R.id.nav_send) {
+
+        //}
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

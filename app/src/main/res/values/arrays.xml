@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--SubwayActivity의 스피너에 들어갈 항목-->
+
+    <!--승강장 번호 항목-->
+    <string-array name="platform_num">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <!--구간 항목-->
+    <string-array name="platform_section">
+        <item>1~2</item>
+        <item>2~3</item>
+        <item>3~4</item>
+    </string-array>
+
+</resources>
