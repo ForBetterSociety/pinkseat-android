@@ -26,15 +26,11 @@ public class SubwayActivity extends AppCompatActivity {
         tabHost1.setup(); //탭 호출
 
         // 첫 번째 Tab (소요산 행)
-        TabHost.TabSpec ts1 = tabHost1.newTabSpec("Tab Spec 1");
-        ts1.setContent(R.id.content1);
-        ts1.setIndicator("소요산 행");
+        TabHost.TabSpec ts1 = tabHost1.newTabSpec("Tab Spec 1").setContent(R.id.content1).setIndicator("소요산 행");
         tabHost1.addTab(ts1);
 
         // 두 번째 Tab (인천/신창 행)
-        TabHost.TabSpec ts2 = tabHost1.newTabSpec("Tab Spec 2");
-        ts2.setContent(R.id.content2);
-        ts2.setIndicator("인천/신창 행");
+        TabHost.TabSpec ts2 = tabHost1.newTabSpec("Tab Spec 2").setContent(R.id.content2).setIndicator("인천/신창 행");
         tabHost1.addTab(ts2);
 
 
