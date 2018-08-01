@@ -1,5 +1,6 @@
 package com.hyeong.pinkseat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -7,11 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 // 2018.07.31 한 것 : 탭 메뉴 생성 & 스피너 값 지정 & 버튼 클릭 이벤트 선언
-//            남은 것 : 탭 메뉴 구동 확인 & 탭 메뉴에 리스트뷰 추가 & '조회'버튼 클릭 시 SeatActivity 로 인텐트 (전송할 정보는 x)
+//            남은 것 : 탭 메뉴 구동 확인 & 탭 메뉴에 리스트뷰 추가 & '조회'버튼 클릭 시, SeatActivity 로 인텐트 (전송할 정보는 x)
 
+// 2018.08.01 한 것 : 탭 메뉴 구동 확인 & '조회'버튼 클릭 시, 7번 화면으로 인텐트 & 7번 화면으로 인텐트 시, 문자열 전달 성공 & '취소'버튼 클릭 시, 현재 액티비티 종료 (2번 화면이 보여짐)
+//          남은 것 : 탭 메뉴에 리스트뷰 추가 & 7번으로 intent 시, 입력받은 열차정보를 담은 변수를 전달
 
 // <6번 열차 조회 화면>
 public class SubwayActivity extends AppCompatActivity {
@@ -56,8 +58,9 @@ public class SubwayActivity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"조회 버튼 클릭",Toast.LENGTH_SHORT).show();
-                // #####7번 화면으로 넘어가는 이벤트 추가 필요#####
+                Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
+                intent5.putExtra("train_info1","시간"); //#####train_info1를 열차 정보를 담은 변수로 대체필요#####
+                startActivity(intent5); //7번 화면으로 이동
             }
         });
 
@@ -65,8 +68,7 @@ public class SubwayActivity extends AppCompatActivity {
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"취소 버튼 클릭",Toast.LENGTH_SHORT).show();
-                // #####2번 화면으로 넘어가는 이벤트 추가 필요#####
+                finish(); //현재 액티비티 종료
             }
         });
 

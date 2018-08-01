@@ -1,6 +1,7 @@
 package com.hyeong.pinkseat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,10 @@ import android.widget.Toast;
 
 // 2018.07.31 한 것 : 좌석버튼 생성 & 버튼 이벤트 정의(AlertDialog)
 //          남은 것 : 레이아웃에 뒤로가기 버튼 추가 & 뒤로가기 버튼 선택 시 SubwayActivity로 인텐트
-//                    & AlertDialog 정상 작동 확인 & P42~44 버튼 선택 후 AlertDialog의 확인 버튼 선택 시, MySeatActivity 로 인텐트 (좌석 번호 string 전송)
+//                    & AlertDialog 정상 작동 확인 & P42~44 버튼 선택 후 AlertDialog의 확인 버튼 선택 시, MySeatFragment 로 화면 전환
+
+// 2018.08.01 한 것 : AlertDialog의 '확인' 버튼 클릭 시, 2번 메인화면으로 intent & 2번으로 intent 시, 문자열 전달 성공 & 뒤로가기 버튼 생성 & 뒤로가기 버튼 클릭 시, 액티비티 종료(6번 화면으로 이동)
+//          남은 것 : 2번으로 intent 시, 입력받은 좌석정보를 전달할 때 6번에서 받은 정보를 담은 변수를 전달
 
 // <7번 좌석 선택 화면>
 public class SeatActivity extends AppCompatActivity {
@@ -19,6 +23,15 @@ public class SeatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat);
+
+        /*** [뒤로가기 버튼 이벤트 설정] ***/
+        Button btn_Back = (Button)findViewById(R.id.btn_back);
+        btn_Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         /*** [좌석 선택 & AlertDialog 버튼 선택 이벤트 설정] ***/
@@ -50,8 +63,11 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
-                                Toast.makeText(getApplicationContext(),"P42번 좌석 착석",Toast.LENGTH_SHORT).show();
+                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                intent4.putExtra("seat_num","P42"); //#####P42를 좌석번호 변수로 대체필요#####
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent4);
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){
@@ -77,8 +93,11 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
-                                Toast.makeText(getApplicationContext(),"P43번 좌석 착석",Toast.LENGTH_SHORT).show();
+                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                intent4.putExtra("seat_num","P43"); //#####P43를 좌석번호 변수로 대체필요#####
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent4);
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){
@@ -104,8 +123,11 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
-                                Toast.makeText(getApplicationContext(),"P44번 좌석 착석",Toast.LENGTH_SHORT).show();
+                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                intent4.putExtra("seat_num","P44"); //#####P44를 좌석번호 변수로 대체필요#####
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent4);
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){

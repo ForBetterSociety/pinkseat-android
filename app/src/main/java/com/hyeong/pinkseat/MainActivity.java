@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+
+        Intent intent_4 = getIntent(); //7번의 인텐트 수신
+        String data = intent_4.getStringExtra("seat_num");
+        Toast.makeText(getApplicationContext(),"인텐트로 받은 좌석 번호 : "+data,Toast.LENGTH_SHORT).show();
 
     }
 }
