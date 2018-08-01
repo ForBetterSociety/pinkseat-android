@@ -20,29 +20,31 @@
         <TabHost
             android:id="@+id/tabhost1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
                 <!--TabWidget의 id는 반드시 @android:id/tabs임-->
                 <TabWidget
                     android:id="@android:id/tabs"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"/>
                     <!--FrameLayout의 id는 반드시 @android:id/tabcontent임-->
                     <FrameLayout
                         android:id="@android:id/tabcontent"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
 
                         <!--1번째 페이지-->
                         <LinearLayout
                             android:id="@+id/content1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="10dp">
                             <!--'수원역' 이미지-->
                             <ImageView
                                 android:id="@+id/iv_1"
@@ -63,7 +65,8 @@
                             android:id="@+id/content2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="10dp">
                             <!--'수원역' 이미지-->
                             <ImageView
                                 android:id="@+id/iv_2"
@@ -80,8 +83,6 @@
                         </LinearLayout>
 
                     </FrameLayout>
-
-                </TabWidget>
 
             </LinearLayout>
 

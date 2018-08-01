@@ -20,6 +20,7 @@ public class SeatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat);
 
+
         /*** [좌석 선택 & AlertDialog 버튼 선택 이벤트 설정] ***/
         //착석 불가 자리
         Button btn_p41 = (Button)findViewById(R.id.btn_P41);
@@ -32,7 +33,7 @@ public class SeatActivity extends AppCompatActivity {
         btn_p41.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"이미 착석 된 좌석입니다.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"이미 착석된 좌석입니다.",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -50,7 +51,7 @@ public class SeatActivity extends AppCompatActivity {
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
                                 // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
-                                finish();
+                                Toast.makeText(getApplicationContext(),"P42번 좌석 착석",Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){
@@ -76,8 +77,8 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P43) 전송#####
-                                finish();
+                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
+                                Toast.makeText(getApplicationContext(),"P43번 좌석 착석",Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){
@@ -103,8 +104,8 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P44) 전송#####
-                                finish();
+                                // #####8번 화면으로 넘어가는 인텐트 추가 필요 + 좌석정보(P42) 전송#####
+                                Toast.makeText(getApplicationContext(),"P44번 좌석 착석",Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setNegativeButton("취소", new DialogInterface.OnClickListener(){
