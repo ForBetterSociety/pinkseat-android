@@ -20,7 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SubwayActivity" />
         <activity android:name=".SeatActivity" />
         <activity android:name=".MySeatActivity"></activity>

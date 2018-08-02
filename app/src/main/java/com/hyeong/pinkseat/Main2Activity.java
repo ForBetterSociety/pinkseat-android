@@ -20,7 +20,7 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Fragment fragment = null;
     FragmentManager mFragment;
-    String title = getString(R.string.app_name);
+   // String title = getString(R.string.app_name);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class Main2Activity extends AppCompatActivity
         setContentView(R.layout.activity_main2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -93,20 +92,27 @@ public class Main2Activity extends AppCompatActivity
 
         } else if (id == R.id.nav_declare) {
             fragment = new DeclareFragment();
-            title = "신고";
+            setTitle("신고");
+            //title = "신고";
         } else if (id == R.id.nav_setting) {
             fragment = new SettingFragment();
-            title = "설정";
-
+            setTitle("신고");
+            //title = "설정";
         }
+      //  if (getSupportActionBar() != null) {
+      //      getSupportActionBar().setTitle(title);
+       // }
+
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }

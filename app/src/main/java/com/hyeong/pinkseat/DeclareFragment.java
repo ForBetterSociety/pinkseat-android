@@ -31,6 +31,7 @@ public class DeclareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        //getActivity().setTitle("신고");
         return inflater.inflate(R.layout.fragment_declare, container, false);
     }
 
