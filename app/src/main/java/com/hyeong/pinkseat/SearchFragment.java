@@ -17,6 +17,7 @@ public class SearchFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+
     public SearchFragment() {
         // Required empty public constructor
     }
@@ -59,4 +60,8 @@ public class SearchFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 }
