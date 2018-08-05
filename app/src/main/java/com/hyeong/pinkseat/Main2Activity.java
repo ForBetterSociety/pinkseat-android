@@ -20,14 +20,16 @@ public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Fragment fragment = null;
     FragmentManager mFragment;
-   // String title = getString(R.string.app_name);
+
+    Toolbar toolbar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -85,27 +87,38 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+      //  getSupportActionBar().setTitle("신고");
 
-        if (id == R.id.nav_usage) {
+
+
+        if (id == R.id.nav_search) {
             // Handle the camera action
+            getSupportActionBar().setTitle("역 찾기");
+            fragment = new SearchFragment();
+
+        } else if (id == R.id.nav_usage) {
+            // Handle the camera action
+            getSupportActionBar().setTitle("어플 이용법");
+            fragment = new UsageFragment();
+
         } else if (id == R.id.nav_status) {
 
         } else if (id == R.id.nav_declare) {
+            getSupportActionBar().setTitle("신고");
             fragment = new DeclareFragment();
-            setTitle("신고");
-            //title = "신고";
+
         } else if (id == R.id.nav_setting) {
+            getSupportActionBar().setTitle("설정");
             fragment = new SettingFragment();
-            setTitle("신고");
-            //title = "설정";
+
         }
-      //  if (getSupportActionBar() != null) {
-      //      getSupportActionBar().setTitle(title);
-       // }
+        //  if (getSupportActionBar() != null) {
+        //      getSupportActionBar().setTitle(title);
+        // }
 
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.container, fragment);
+        transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
 
