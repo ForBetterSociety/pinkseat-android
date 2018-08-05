@@ -5,7 +5,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,8 +18,7 @@ import android.view.View;
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Fragment fragment = null;
-    FragmentManager mFragment;
-
+    private Fragment searchFragment;
     Toolbar toolbar = null;
 
     @Override
@@ -31,15 +29,6 @@ public class Main2Activity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
-        /*Button suwon = (Button)findViewById(R.id.suwon);
-
-        suwon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(),SubwayActivity.class);
-                startActivity(intent1);
-            }
-        });*/
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +39,8 @@ public class Main2Activity extends AppCompatActivity
             }
         });
 
+        searchFragment = new SearchFragment();
+        setDefaulteFragment();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -58,6 +49,17 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void setDefaulteFragment(){
+
+        /** * 화면에 보여지는 Fragment를 관리한다. * FragmentManager : Fragment를 바꾸거나 추가하는 객체 */
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        /** * R.id.container(activity_main.xml)에 띄우겠다. * 첫번째로 보여지는 Fragment는 firstFragment로 설정한다. */
+        transaction.add(R.id.container, searchFragment);
+        /** * Fragment의 변경사항을 반영시킨다. */
+        transaction.commit();
+
     }
 
     @Override
@@ -97,9 +99,6 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-      //  getSupportActionBar().setTitle("신고");
-
-
 
         if (id == R.id.nav_search) {
             // Handle the camera action
@@ -124,16 +123,11 @@ public class Main2Activity extends AppCompatActivity
             fragment = new SettingFragment();
 
         }
-        //  if (getSupportActionBar() != null) {
-        //      getSupportActionBar().setTitle(title);
-        // }
-
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
