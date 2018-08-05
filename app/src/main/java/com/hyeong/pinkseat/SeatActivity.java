@@ -16,6 +16,10 @@ import android.widget.Toast;
 // 2018.08.01 한 것 : AlertDialog의 '확인' 버튼 클릭 시, 2번 메인화면으로 intent & 2번으로 intent 시, 문자열 전달 성공 & 뒤로가기 버튼 생성 & 뒤로가기 버튼 클릭 시, 액티비티 종료(6번 화면으로 이동)
 //          남은 것 : 2번으로 intent 시, 입력받은 좌석정보를 전달할 때 6번에서 받은 정보를 담은 변수를 전달
 
+// 2018.08.05 한 것 : 6번에서 인텐트 될 때, 열차 정보를 받음
+//          남은 것 : 2번으로 intent 시, 2번 화면에 인텐트 신호를 보내, 2번에서 그 신호를 받았을 때 "착석 신청이 되었습니다" 토스트 띄우기
+
+
 // <7번 좌석 선택 화면>
 public class SeatActivity extends AppCompatActivity {
 
@@ -23,6 +27,11 @@ public class SeatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat);
+
+        Intent intent_5 = getIntent(); //6번의 인텐트 수신
+        final String train_info1 = intent_5.getStringExtra("train_info1");
+        final String train_info2 = intent_5.getStringExtra("train_info2");
+        Toast.makeText(getApplicationContext(),"인텐트로 받은 열차 정보 : "+train_info1+", "+train_info2,Toast.LENGTH_SHORT).show();
 
         /*** [뒤로가기 버튼 이벤트 설정] ***/
         Button btn_Back = (Button)findViewById(R.id.btn_back);
@@ -64,7 +73,9 @@ public class SeatActivity extends AppCompatActivity {
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
                                 Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
-                                intent4.putExtra("seat_num","P42"); //#####P42를 좌석번호 변수로 대체필요#####
+                                intent4.putExtra("seat_num","P42");
+                                intent4.putExtra("train_time",train_info1);
+                                intent4.putExtra("train_dir",train_info2);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent4);
@@ -94,7 +105,9 @@ public class SeatActivity extends AppCompatActivity {
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
                                 Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
-                                intent4.putExtra("seat_num","P43"); //#####P43를 좌석번호 변수로 대체필요#####
+                                intent4.putExtra("seat_num","P43");
+                                intent4.putExtra("train_time",train_info1);
+                                intent4.putExtra("train_dir",train_info2);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent4);
@@ -124,7 +137,9 @@ public class SeatActivity extends AppCompatActivity {
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
                                 Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
-                                intent4.putExtra("seat_num","P44"); //#####P44를 좌석번호 변수로 대체필요#####
+                                intent4.putExtra("seat_num","P44");
+                                intent4.putExtra("train_time",train_info1);
+                                intent4.putExtra("train_dir",train_info2);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent4);
@@ -141,11 +156,6 @@ public class SeatActivity extends AppCompatActivity {
                 dialog.show();    // 알림창 띄우기
             }
         });
-
-        Intent intent_5 = getIntent(); //6번의 인텐트 수신
-        String train_info1 = intent_5.getStringExtra("train_info1");
-        String train_info2 = intent_5.getStringExtra("train_info2");
-        Toast.makeText(getApplicationContext(),"인텐트로 받은 열차 정보 : "+train_info1+", "+train_info2,Toast.LENGTH_SHORT).show();
 
     }
 }

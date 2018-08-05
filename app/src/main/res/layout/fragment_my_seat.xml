@@ -66,7 +66,7 @@
 
                     <ImageView
                         android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_height="55dp"
                         android:src="@drawable/seat_icon" />
 
                     <LinearLayout
@@ -92,14 +92,17 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="05:10\n(광운대행)" />
+                                android:text="05:10\n(광운대행)"
+                                android:background="@color/colorEmptySeat"
+                                />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="3dp"
+                                android:layout_marginLeft="1dp"
                                 android:gravity="center"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:background="@color/colorSmothPink">
 
                                 <TextView
                                     android:id="@+id/seatinfo_platnum"
@@ -122,6 +125,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="P42"
+                                        android:textColor="@color/colorFullSeat"
                                         android:textStyle="bold" />
 
                                 </LinearLayout>

@@ -1,14 +1,17 @@
 package com.hyeong.pinkseat;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.TimerTask;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // 2018.08.01 한 것 : MySeatActivity를 MySeatFragment로 바꿈 (레이아웃도 수정)
 //          남은 것 : 2번 화면의 메뉴 '나의 좌석 현황'과 연결 & 2번 화면이 7번 화면의 좌석 선택 정보를 받으면, 각 TextView에 출력 & 타이머 구동 확인 후 수정
@@ -16,59 +19,64 @@ import java.util.TimerTask;
 // <8번 나의 좌석 현황 화면>
 public class MySeatFragment extends Fragment {
 
-    // 타이머 관련 변수
-    private TimerTask second;
-    private TextView timer_text;
-    private final Handler handler = new Handler();
 
-    int timer_sec;
-    int count;
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy년-MM월-dd일");
 
     protected void Update() {
-        Runnable updater = new Runnable() {
-            public void run() {
-                timer_text.setText(timer_sec + "초");
-            }
-        };
-        handler.post(updater);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-       // testStart();
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_seat, container, false);
+        // Inflate the layout for this fragment\
+        View v = inflater.inflate(R.layout.fragment_my_seat,container,false);
+        Button btn_ok = (Button)v.findViewById(R.id.btn_ok2);
+        Button btn_cansle = (Button)v.findViewById(R.id.btn_cancle);
 
+        TextView tv_train_time = (TextView)v.findViewById(R.id.seatinfo_time);
+        TextView tv_today = (TextView) v.findViewById(R.id.seatinfo_date);
+        TextView tv_seet_num = (TextView) v.findViewById(R.id.seatinfo_seatnum);
+
+        Intent intent_5 = getActivity().getIntent(); //7번의 인텐트 수신
+        final String train_info1 = intent_5.getStringExtra("train_time");
+        final String train_info2 = intent_5.getStringExtra("train_dir");
+        final String seat_info = intent_5.getStringExtra("seat_num");
+
+        tv_train_time.setText(train_info1+"\n("+train_info2+")");
+        tv_today.setText(getTime().toString());
+        tv_seet_num.setText(seat_info);
+
+
+        btn_ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),"제한시간 내에 앉음",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_cansle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+
+        return v;
     }
 
-    /*** [타이머 설정] ***/
-   /* public void testStart() {
-        timer_text = (TextView) getView().findViewById(R.id.seatinfo_timer);
-        timer_sec = 0;
-        count = 0;
+    //오늘 날짜 얻는 함수
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+    }
 
-        second = new TimerTask() {
-
-            @Override
-            public void run() {
-                Log.i("Test", "Timer start");
-                Update();
-                timer_sec++;
-            }
-        };
-        Timer timer = new Timer();
-        timer.schedule(second, 0, 1000);
-    }*/
-
-
-
-
-}
