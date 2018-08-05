@@ -31,6 +31,16 @@ public class Main2Activity extends AppCompatActivity
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
+        /*Button suwon = (Button)findViewById(R.id.suwon);
+
+        suwon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(),SubwayActivity.class);
+                startActivity(intent1);
+            }
+        });*/
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +112,8 @@ public class Main2Activity extends AppCompatActivity
             fragment = new UsageFragment();
 
         } else if (id == R.id.nav_status) {
+            getSupportActionBar().setTitle("나의 좌석 현황");
+            fragment = new MySeatFragment();
 
         } else if (id == R.id.nav_declare) {
             getSupportActionBar().setTitle("신고");

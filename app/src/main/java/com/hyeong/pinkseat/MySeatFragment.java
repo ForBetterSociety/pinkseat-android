@@ -3,13 +3,11 @@ package com.hyeong.pinkseat;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Timer;
 import java.util.TimerTask;
 
 // 2018.08.01 한 것 : MySeatActivity를 MySeatFragment로 바꿈 (레이아웃도 수정)
@@ -39,7 +37,7 @@ public class MySeatFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        testStart();
+       // testStart();
 
     }
 
@@ -52,7 +50,7 @@ public class MySeatFragment extends Fragment {
     }
 
     /*** [타이머 설정] ***/
-    public void testStart() {
+   /* public void testStart() {
         timer_text = (TextView) getView().findViewById(R.id.seatinfo_timer);
         timer_sec = 0;
         count = 0;
@@ -68,7 +66,7 @@ public class MySeatFragment extends Fragment {
         };
         Timer timer = new Timer();
         timer.schedule(second, 0, 1000);
-    }
+    }*/
 
 
 

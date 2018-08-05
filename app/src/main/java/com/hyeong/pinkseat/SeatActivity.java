@@ -63,7 +63,7 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
                                 intent4.putExtra("seat_num","P42"); //#####P42를 좌석번호 변수로 대체필요#####
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -93,7 +93,7 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
                                 intent4.putExtra("seat_num","P43"); //#####P43를 좌석번호 변수로 대체필요#####
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -123,7 +123,7 @@ public class SeatActivity extends AppCompatActivity {
                         .setPositiveButton("확인", new DialogInterface.OnClickListener(){
                             // 확인 버튼 시 설정
                             public void onClick(DialogInterface dialog, int whichButton){
-                                Intent intent4 = new Intent(getApplicationContext(),MainActivity.class);
+                                Intent intent4 = new Intent(getApplicationContext(),Main2Activity.class);
                                 intent4.putExtra("seat_num","P44"); //#####P44를 좌석번호 변수로 대체필요#####
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

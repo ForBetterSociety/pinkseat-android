@@ -24,12 +24,9 @@
             android:name=".Main2Activity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity android:name=".SubwayActivity" />
         <activity android:name=".SeatActivity" />
-
-        <activity android:name=".MySeatActivity" />
     </application>
 
 </manifest>
