@@ -142,5 +142,10 @@ public class SeatActivity extends AppCompatActivity {
             }
         });
 
+        Intent intent_5 = getIntent(); //6번의 인텐트 수신
+        String train_info1 = intent_5.getStringExtra("train_info1");
+        String train_info2 = intent_5.getStringExtra("train_info2");
+        Toast.makeText(getApplicationContext(),"인텐트로 받은 열차 정보 : "+train_info1+", "+train_info2,Toast.LENGTH_SHORT).show();
+
     }
 }

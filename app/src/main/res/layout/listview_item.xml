@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hyeong.pinkseat.CheckableLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/checkbox1"
+        android:focusable="false"
+        android:clickable="false"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="5">
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="05:10"
+            android:textSize="15dp"
+            android:textColor="@color/colorBlack"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_direction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="광운대행"
+            android:textSize="10dp"
+            android:textColor="@color/colorNormalSeat"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+</com.hyeong.pinkseat.CheckableLinearLayout>
