@@ -1,17 +1,22 @@
 package com.hyeong.pinkseat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
-import android.widget.Toast;
 
 // 2018.07.31 한 것 : 탭 메뉴 생성 & 스피너 값 지정 & 버튼 클릭 이벤트 선언
-//            남은 것 : 탭 메뉴 구동 확인 & 탭 메뉴에 리스트뷰 추가 & '조회'버튼 클릭 시 SeatActivity 로 인텐트 (전송할 정보는 x)
+//            남은 것 : 탭 메뉴 구동 확인 & 탭 메뉴에 리스트뷰 추가 & '조회'버튼 클릭 시, SeatActivity 로 인텐트 (전송할 정보는 x)
 
+// 2018.08.01 한 것 : 탭 메뉴 구동 확인 & '조회'버튼 클릭 시, 7번 화면으로 인텐트 & 7번 화면으로 인텐트 시, 문자열 전달 성공 & '취소'버튼 클릭 시, 현재 액티비티 종료 (2번 화면이 보여짐)
+//          남은 것 : 탭 메뉴에 리스트뷰 추가 & 7번으로 intent 시, 입력받은 열차정보를 담은 변수를 전달
+
+//2018.08.05 한 것 : 탭 메뉴에 리스트뷰 추가 & 7번으로 intent 시, 입력받은 열차정보를 담은 변수를 전달 (소요산 행 리스트뷰만 정보 전달 가능)
 
 // <6번 열차 조회 화면>
 public class SubwayActivity extends AppCompatActivity {
@@ -29,10 +34,47 @@ public class SubwayActivity extends AppCompatActivity {
         TabHost.TabSpec ts1 = tabHost1.newTabSpec("Tab Spec 1").setContent(R.id.content1).setIndicator("소요산 행");
         tabHost1.addTab(ts1);
 
-        // 두 번째 Tab (인천/신창 행)
-        TabHost.TabSpec ts2 = tabHost1.newTabSpec("Tab Spec 2").setContent(R.id.content2).setIndicator("인천/신창 행");
+        // 두 번째 Tab (서동탄/신창 행)
+        TabHost.TabSpec ts2 = tabHost1.newTabSpec("Tab Spec 2").setContent(R.id.content2).setIndicator("서동탄/신창 행");
         tabHost1.addTab(ts2);
 
+
+        /*** [탭의 리스트뷰 설정] ***/
+        final ListView listview1; //소요산 행 리스트뷰
+        final ListView listview2; //인천/신창 행 리스트뷰
+        final SubwayLIstViewAdapter adapter1; //소요산 행 어뎁터
+        final SubwayLIstViewAdapter adapter2; //인천/신창 행 어뎁터
+
+        // Adapter 생성
+        adapter1 = new SubwayLIstViewAdapter();
+        adapter2 = new SubwayLIstViewAdapter();
+
+        // 리스트뷰 참조 및 Adapter달기
+        listview1 = (ListView) findViewById(R.id.listview1);
+        listview2 = (ListView) findViewById(R.id.listview2);
+        listview1.setAdapter(adapter1);
+        listview2.setAdapter(adapter2);
+
+        // 아이템 추가
+        // 소요산 행
+        adapter1.addItem("05:10","광운대행");
+        adapter1.addItem("05:34","청량리행");
+        adapter1.addItem("05:47","광운대행");
+        adapter1.addItem("05:57","청량리행");
+        adapter1.addItem("06:07","광운대행");
+        adapter1.addItem("06:19","광운대행");
+        adapter1.addItem("06:29","광운대행");
+        adapter1.addItem("06:39","청량리행");
+
+        //서동탄/신창 행
+        adapter2.addItem("05:41","신창행");
+        adapter2.addItem("05:58","서동탄행");
+        adapter2.addItem("06:08","신창행");
+        adapter2.addItem("06:22","서동탄행");
+        adapter2.addItem("06:32","신창행");
+        adapter2.addItem("06:44","서동탄행");
+        adapter2.addItem("06:52","천안행(급)");
+        adapter2.addItem("06:57","신창행");
 
         /*** [스피너 설정] ***/
         // 승강장 번호 스피너
@@ -56,8 +98,13 @@ public class SubwayActivity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"조회 버튼 클릭",Toast.LENGTH_SHORT).show();
-                // #####7번 화면으로 넘어가는 이벤트 추가 필요#####
+                final int checked;
+                checked=listview1.getCheckedItemPosition(); //선택된 리스트뷰(소요산행) 아이템의 id를 저장하는 변수 checked 정의
+
+                Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
+                intent5.putExtra("train_info1",adapter1.getTv1(checked)); //열차 시간 정보
+                intent5.putExtra("train_info2",adapter1.getTv2(checked)); //열차 방향 정보
+                startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
             }
         });
 
@@ -65,8 +112,7 @@ public class SubwayActivity extends AppCompatActivity {
         btn_no.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"취소 버튼 클릭",Toast.LENGTH_SHORT).show();
-                // #####2번 화면으로 넘어가는 이벤트 추가 필요#####
+                finish(); //현재 액티비티 종료
             }
         });
 

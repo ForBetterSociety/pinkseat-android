@@ -52,10 +52,12 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/station_icon" />
 
-                            <TextView
+                            <ListView
+                                android:id="@+id/listview1"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="시간표 리스트뷰 자리(소요산행)" />
+                                android:layout_height="200dp"
+                                android:choiceMode="singleChoice">
+                            </ListView>
 
 
                         </LinearLayout>
@@ -74,10 +76,11 @@
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/station_icon" />
 
-                            <TextView
+                            <ListView
+                                android:id="@+id/listview2"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="시간표 리스트뷰 자리(인천/신창행)" />
+                                android:layout_height="200dp"
+                                android:choiceMode="singleChoice"/>
 
 
                         </LinearLayout>
