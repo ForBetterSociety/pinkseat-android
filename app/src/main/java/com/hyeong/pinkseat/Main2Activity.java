@@ -2,9 +2,11 @@ package com.hyeong.pinkseat;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,16 +14,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    Fragment fragment = null;
+    FragmentManager mFragment;
+
+    Toolbar toolbar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -79,26 +87,45 @@ public class Main2Activity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+      //  getSupportActionBar().setTitle("신고");
 
-        if (id == R.id.nav_camera) {
+
+
+        if (id == R.id.nav_search) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            getSupportActionBar().setTitle("역 찾기");
+            fragment = new SearchFragment();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_usage) {
+            // Handle the camera action
+            getSupportActionBar().setTitle("어플 이용법");
+            fragment = new UsageFragment();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_status) {
+
+        } else if (id == R.id.nav_declare) {
+            getSupportActionBar().setTitle("신고");
+            fragment = new DeclareFragment();
+
+        } else if (id == R.id.nav_setting) {
+            getSupportActionBar().setTitle("설정");
+            fragment = new SettingFragment();
 
         }
+        //  if (getSupportActionBar() != null) {
+        //      getSupportActionBar().setTitle(title);
+        // }
 
-        //menu폴더 - activity_main2_drawer.xml 의 주석처리로 인해 오류가 생겨 주석 처리함 (지영)
-        //else if (id == R.id.nav_share) {
 
-        //} else if (id == R.id.nav_send) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
-        //}
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
