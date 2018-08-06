@@ -19,13 +19,15 @@ import android.widget.Toast;
 
 //2018.08.05 한 것 : 탭 메뉴에 리스트뷰 추가 & 7번으로 intent 시, 입력받은 열차정보를 담은 변수를 전달 (소요산 행 리스트뷰만 정보 전달 가능)
 
+//2018.08.06 한 것 : 서동탄/신창 행 리스트뷰도 정보 전달 가능 & 스피너 값도 전달 가능
 
 // <6번 열차 조회 화면>
 public class SubwayActivity extends AppCompatActivity {
 
 
     //체크박스 선택 여부 판단 변수
-    int checked =-1;
+    int checked1 =-1; //소요산 행
+    int checked2 =-1; //서동탄/신창 행
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,13 +86,13 @@ public class SubwayActivity extends AppCompatActivity {
 
         /*** [스피너 설정] ***/
         // 승강장 번호 스피너
-        Spinner Spi_num = (Spinner)findViewById(R.id.spin_plat_num);
-        ArrayAdapter numAdapter = ArrayAdapter.createFromResource(this, R.array.platform_num, android.R.layout.simple_spinner_item);
+        final Spinner Spi_num = (Spinner)findViewById(R.id.spin_plat_num);
+        final ArrayAdapter numAdapter = ArrayAdapter.createFromResource(this, R.array.platform_num, android.R.layout.simple_spinner_item);
         numAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spi_num.setAdapter(numAdapter);
 
         // 구간 번호 스피너
-        Spinner Spi_section = (Spinner)findViewById(R.id.spin_plat_section);
+        final Spinner Spi_section = (Spinner)findViewById(R.id.spin_plat_section);
         ArrayAdapter sectionAdapter = ArrayAdapter.createFromResource(this, R.array.platform_section, android.R.layout.simple_spinner_item);
         sectionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Spi_section.setAdapter(sectionAdapter);
@@ -104,12 +106,26 @@ public class SubwayActivity extends AppCompatActivity {
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checked=listview1.getCheckedItemPosition(); //선택된 리스트뷰(소요산행) 아이템의 id를 저장하는 변수 checked 정의
+                checked1=listview1.getCheckedItemPosition(); //선택된 리스트뷰(소요산행) 아이템의 id를 저장하는 변수 checked 정의
+                checked2=listview2.getCheckedItemPosition(); //선택된 리스트뷰(서동탄/신창행) 아이템의 id를 저장하는 변수 checked 정의
 
-                if(checked>=0){
+                if(checked1>=0&&checked2>=0){
+                    Toast.makeText(getApplicationContext(),"열차 시간은 하나만 선택해주세요",Toast.LENGTH_SHORT).show();
+                }
+                else if(checked1>=0){
                     Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
-                    intent5.putExtra("train_info1",adapter1.getTv1(checked)); //열차 시간 정보
-                    intent5.putExtra("train_info2",adapter1.getTv2(checked)); //열차 방향 정보
+                    intent5.putExtra("train_info1",adapter1.getTv1(checked1)); //열차 시간 정보
+                    intent5.putExtra("train_info2",adapter1.getTv2(checked1)); //열차 방향 정보
+                    intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
+                    intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
+                    startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
+                }
+                else if(checked2>=0){
+                    Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
+                    intent5.putExtra("train_info1",adapter2.getTv1(checked2)); //열차 시간 정보
+                    intent5.putExtra("train_info2",adapter2.getTv2(checked2)); //열차 방향 정보
+                    intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
+                    intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
                     startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
                 }
                 else Toast.makeText(getApplicationContext(),"열차 시간을 선택해주세요",Toast.LENGTH_SHORT).show();
