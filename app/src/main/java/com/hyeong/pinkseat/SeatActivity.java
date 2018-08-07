@@ -101,13 +101,13 @@ public class SeatActivity extends AppCompatActivity {
 
     }
 
-    //착석 가능 자리(버튼) 선택시 이벤트
+    //착석 가능 자리(버튼) 선택시 호출되는 함수
     public void Seat(final Button btn){
         //다이얼로그 알람
         AlertDialog.Builder builder = new AlertDialog.Builder(SeatActivity.this);
 
         builder.setTitle("좌석 선택")
-                .setMessage("P44 좌석에 앉으시겠습니까?")
+                .setMessage(btn.getText()+"좌석에 앉으시겠습니까?")
                 .setCancelable(false) //폰의 뒤로가기로 취소 가능하게 설정
                 .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     // 확인 버튼 시 설정
@@ -115,7 +115,7 @@ public class SeatActivity extends AppCompatActivity {
                         btn.setBackground(Drawable.createFromPath("@color/colorFullSeat"));
                         Intent intent4 = new Intent(getApplicationContext(), Main2Activity.class);
                         MySeatFragment.cancled=false;
-                        intent4.putExtra("seat_num", "P44");
+                        intent4.putExtra("seat_num", btn.getText());
                         intent4.putExtra("train_time", train_info1);
                         intent4.putExtra("train_dir", train_info2);
                         intent4.putExtra("plat_num",plat_num);
@@ -137,7 +137,7 @@ public class SeatActivity extends AppCompatActivity {
         dialog.show();    // 알림창 띄우기
     }
 
-    //착석 불가능 자리(버튼) 선택시 이벤트
+    //착석 불가능 자리(버튼) 선택시 호출되는 함수
     public void DontSeat(){
         Toast.makeText(getApplicationContext(), "이미 착석된 좌석입니다.", Toast.LENGTH_SHORT).show();
     }
