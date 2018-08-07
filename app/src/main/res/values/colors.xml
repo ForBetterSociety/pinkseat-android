@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
+    <color name="textColorPrimary">#ffffff</color>
 
     <!--좌석 현황 색상-->
     <color name="colorFullSeat">#e26c74</color>

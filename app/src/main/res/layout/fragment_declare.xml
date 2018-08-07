@@ -24,8 +24,8 @@
             <ImageView
                 android:id="@+id/declare_img_1"
                 android:layout_marginRight="10dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/declare_icon" />
 
             <TextView
@@ -34,12 +34,13 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal"
-                android:text="임산부 배려석에\n 비 임산부가 앉았어요!" />
+                android:textSize="15dp"
+                android:text="임산부 배려석에\n비 임산부가 앉았어요!" />
 
             <CheckBox
                 android:layout_toRightOf="@+id/declare_txt_1"
+                android:layout_marginLeft="30dp"
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
@@ -56,8 +57,8 @@
             <ImageView
                 android:id="@+id/declare_img_2"
                 android:layout_marginRight="10dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/seat_icon" />
 
             <TextView
@@ -66,12 +67,13 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal"
-                android:text="임산부 배려석 장치에\n 이상이 있어요!" />
+                android:textSize="15dp"
+                android:text="임산부 배려석 장치에\n이상이 있어요!" />
 
             <CheckBox
                 android:layout_toRightOf="@+id/declare_txt_2"
+                android:layout_marginLeft="30dp"
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
@@ -89,8 +91,8 @@
             <ImageView
                 android:id="@+id/declare_img_3"
                 android:layout_marginRight="10dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/app_icon" />
 
             <TextView
@@ -99,12 +101,14 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:gravity="center_horizontal"
+                android:textSize="15dp"
+                android:layout_centerInParent="true"
                 android:text="어플이 작동하지 않아요!" />
 
             <CheckBox
                 android:layout_toRightOf="@+id/declare_txt_3"
+                android:layout_marginLeft="30dp"
+                android:layout_centerInParent="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>

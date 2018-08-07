@@ -55,7 +55,7 @@ public class Main2Activity extends AppCompatActivity
 
         /** * 화면에 보여지는 Fragment를 관리한다. * FragmentManager : Fragment를 바꾸거나 추가하는 객체 */
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        /** * R.id.container(activity_main.xml)에 띄우겠다. * 첫번째로 보여지는 Fragment는 firstFragment로 설정한다. */
+        /** * R.id.container(activity_main.xml)에 띄우겠다. * 첫번째로 보여지는 Fragment는 searchFragment로 설정한다. */
         transaction.add(R.id.container, searchFragment);
         /** * Fragment의 변경사항을 반영시킨다. */
         transaction.commit();
