@@ -15,24 +15,23 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical">
 
             <Button
                 android:id="@+id/btn_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:background="@drawable/back_icon"
                 />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="좌석 현황 "
                 android:textColor="@color/colorBlack"
-                android:textSize="30dp"
-                android:layout_marginLeft="80dp"/>
+                android:textSize="25dp"
+                android:layout_marginLeft="100dp"/>
         </LinearLayout>
 
         <View
@@ -45,7 +44,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
             <!--좌석 현황도의 주석-->
             <ImageView
@@ -58,18 +58,34 @@
         <!--구간 번호 윗부분-->
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/plat_num1_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4-1"
+                android:textSize="17dp"
+                android:rotation="90"/>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:src="@drawable/plat_icon" />
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/section4_1_image" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
                 android:layout_marginLeft="265dp"
-                android:src="@drawable/section4_2_image" />
+                android:src="@drawable/plat_icon" />
+            <TextView
+                android:id="@+id/plat_num1_rignt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4-1"
+                android:textSize="17dp"
+                android:rotation="-90"/>
 
         </LinearLayout>
 
@@ -77,8 +93,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp">
+            android:layout_gravity="center">
 
             <!--좌석 현황도 윗부분-->
             <LinearLayout
@@ -186,22 +201,38 @@
         </LinearLayout>
 
         <!--구간 번호 아래부분-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_horizontal">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/section4_1_image" />
+                <TextView
+                    android:id="@+id/plat_num2_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4-2"
+                    android:textSize="17dp"
+                    android:rotation="90"/>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/plat_icon" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="265dp"
-                android:src="@drawable/section4_2_image" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="265dp"
+                    android:src="@drawable/plat_icon" />
+                <TextView
+                    android:id="@+id/plat_num2_rignt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4-2"
+                    android:textSize="17dp"
+                    android:rotation="-90"/>
 
-        </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
