@@ -5,36 +5,6 @@
     tools:context="com.hyeong.pinkseat.SearchFragment"
     android:background="@color/colorWhite">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="vertical">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_margin="10dp"
-           android:orientation="horizontal"
-           android:layout_gravity="center">
-
-           <ImageView
-               android:layout_width="30dp"
-               android:layout_height="30dp"
-               android:layout_marginRight="10dp"
-               android:src="@drawable/search_icon"/>
-           <EditText
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:background="@drawable/login_text"
-               />
-       </LinearLayout>
-
-       <ImageView
-           android:visibility="invisible"
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           android:src="@drawable/subway"/>
-   </LinearLayout>
-
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

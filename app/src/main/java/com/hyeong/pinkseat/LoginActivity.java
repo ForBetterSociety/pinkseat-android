@@ -16,13 +16,21 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Button Login_ok = (Button) findViewById(R.id.login_ok);
-        Button Login_cancle = (Button) findViewById(R.id.login_cancle);
+        Button Join = (Button) findViewById(R.id.join);
 
         Login_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(), Main2Activity.class);
                 startActivity(intent1);
+
+            }
+        });
+        Join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(getApplicationContext(), JoinActivity.class);
+                startActivity(intent2);
 
             }
         });

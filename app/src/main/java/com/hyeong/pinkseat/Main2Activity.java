@@ -1,5 +1,6 @@
 package com.hyeong.pinkseat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import kr.go.seoul.trafficsubway.TrafficSubwayDetailTypeB;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -100,34 +103,62 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_search) {
+        if (id == R.id.nav_main) {
             // Handle the camera action
-            getSupportActionBar().setTitle("역 찾기");
+            getSupportActionBar().setTitle("메인");
             fragment = new SearchFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
+
+        }else if (id == R.id.nav_pregnant) {
+            // Handle the camera action
+            getSupportActionBar().setTitle("임산부석 선택");
+            Intent intent = new Intent(this, TrafficSubwayDetailTypeB.class);
+            intent.putExtra("OpenAPIKey","7173524e7073687a3930737a47506a");
+            startActivity(intent);
+            finish();
         } else if (id == R.id.nav_usage) {
             // Handle the camera action
             getSupportActionBar().setTitle("어플 이용법");
-            fragment = new UsageFragment();
+           fragment = new UsageFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
 
         } else if (id == R.id.nav_status) {
             getSupportActionBar().setTitle("나의 좌석 현황");
             fragment = new MySeatFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
 
         } else if (id == R.id.nav_declare) {
             getSupportActionBar().setTitle("신고");
             fragment = new DeclareFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
 
         } else if (id == R.id.nav_setting) {
             getSupportActionBar().setTitle("설정");
             fragment = new SettingFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+
 
         }
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

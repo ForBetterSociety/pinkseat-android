@@ -4,10 +4,16 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_search"
+            android:id="@+id/nav_main"
+            android:icon="@drawable/user_icon"
+            android:title="메인" />
+        <item
+            android:id="@+id/nav_pregnant"
             android:icon="@drawable/search_icon"
-            android:title="역 찾기" />
+            android:title="임산부석 선택" />
+
         <item
             android:id="@+id/nav_usage"
             android:icon="@drawable/exam"
@@ -16,14 +22,19 @@
             android:id="@+id/nav_status"
             android:icon="@drawable/tickets"
             android:title="나의 좌석 현황" />
-        <item
-            android:id="@+id/nav_declare"
-            android:icon="@drawable/alert"
-            android:title="신고" />
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="설정" />
+
+    </group>
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/nav_declare"
+        android:icon="@drawable/declare_icon"
+        android:title="신고" />
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/set_icon"
+        android:title="설정" />
+
     </group>
 
 </menu>
