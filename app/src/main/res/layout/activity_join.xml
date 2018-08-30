@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hyeong.pinkseat.LoginActivity">
+    tools:context="com.hyeong.pinkseat.JoinActivity">
 
 
 <LinearLayout
@@ -22,6 +22,49 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:text=" ID :  "
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/register_id_et"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_text"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text=" PW :  "
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/register_pw_et"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_text"
+            android:textSize="20dp"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="25dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp">
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
             android:text=" 이름 :  "
             android:textSize="20dp"/>
         <EditText
@@ -29,7 +72,8 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_text"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:inputType="text"/>
 
     </LinearLayout>
 
@@ -46,21 +90,23 @@
             android:textSize="20dp"/>
         <EditText
             android:id="@+id/register_birth_et1"
-            android:layout_width="100dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_text"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:inputType="number"
+            android:digits="0123456789"
+            android:maxLength="6"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" ㅡ "/>
-        <EditText
+            android:text="  ㅡ "/>
+        <TextView
             android:id="@+id/register_birth_et2"
-            android:layout_width="100dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:hint="2******"
             android:gravity="center"
-            android:background="@drawable/login_text"
             android:textSize="20dp" />
 
 
@@ -79,6 +125,7 @@
             android:text=" 주소 :  "
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/register_address_et"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_text"
@@ -99,12 +146,15 @@
             android:text=" 출산예정일  :  "
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/register_date_et"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:hint="2018-10-10"
             android:gravity="center"
             android:background="@drawable/login_text"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:inputType="date"
+            android:maxLength="8"/>
 
     </LinearLayout>
 
@@ -122,6 +172,7 @@
             android:text=" 산부인과명  :  "
             android:textSize="20dp"/>
         <EditText
+            android:id="@+id/register_hospital_et"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_text"
@@ -145,7 +196,7 @@
             android:textColor="@color/colorWhite"
             android:text="ok"/>
         <Button
-            android:id="@+id/login_cancle"
+            android:id="@+id/join_cancle"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_margin="10dp"
