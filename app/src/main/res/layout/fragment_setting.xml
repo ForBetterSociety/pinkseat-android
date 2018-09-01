@@ -16,6 +16,7 @@
            android:layout_height="100dp"
            android:src="@drawable/user_icon"/>
        <TextView
+           android:id="@+id/set_name"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_margin="10dp"
@@ -36,6 +37,7 @@
                android:text="출산예정일 : "/>
 
            <TextView
+               android:id="@+id/set_date"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="20dp"
@@ -57,6 +59,7 @@
                android:text="산부인과명 : "/>
 
            <TextView
+               android:id="@+id/set_hospital"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="20dp"
@@ -78,6 +81,7 @@
                android:text="인증코드 : "/>
 
            <TextView
+               android:id="@+id/set_code"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="20dp"
@@ -88,6 +92,7 @@
 
        </LinearLayout>
        <Button
+           android:id="@+id/btn_delaccount"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:background="@drawable/ok_btn"
