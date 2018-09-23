@@ -87,10 +87,8 @@ public class JoinActivity extends AppCompatActivity {
 
                 //② RequestObject 생성 *이때 서버로부터 데이터를 받을 responseListener를 반드시 넘겨준다.
                 RegisterRequest registerRequest = new RegisterRequest(id, pw, name, jumin, address, date, hospital, responseListener);
-
                 //① RequestQueue 생성
                 RequestQueue queue = Volley.newRequestQueue(JoinActivity.this);
-
                 //③ 생성된 Object를 RequestQueue로 전달
                 queue.add(registerRequest);
 

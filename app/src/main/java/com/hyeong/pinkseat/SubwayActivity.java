@@ -11,6 +11,13 @@ import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 // 2018.07.31 한 것 : 탭 메뉴 생성 & 스피너 값 지정 & 버튼 클릭 이벤트 선언
 //            남은 것 : 탭 메뉴 구동 확인 & 탭 메뉴에 리스트뷰 추가 & '조회'버튼 클릭 시, SeatActivity 로 인텐트 (전송할 정보는 x)
 
@@ -29,10 +36,19 @@ public class SubwayActivity extends AppCompatActivity {
     int checked1 =-1; //소요산 행
     int checked2 =-1; //서동탄/신창 행
 
+    //seat db occupied, reservated 정보 받을 변수
+    int p41_oc, p41_re, p42_oc, p42_re, p43_oc, p43_re, p44_oc, p44_re;
+
+    // user_idx 받을 변수
+    String idx = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subway);
+
+        Intent intent_5 = getIntent(); //6번의 인텐트 수신
+        idx = intent_5.getStringExtra("user_idx");
 
         /*** [탭 메뉴 설정] ***/
         TabHost tabHost1 = (TabHost) findViewById(R.id.tabhost1);
@@ -102,6 +118,9 @@ public class SubwayActivity extends AppCompatActivity {
         Button btn_ok = (Button) findViewById(R.id.btn_Ok);
         Button btn_no = (Button) findViewById(R.id.btn_No);
 
+        //사용자의 예약 여부 확인 (SeatActivity의 user_reservating을 변화시킴)
+        yourReservating(Integer.parseInt(idx.toString()));
+
         // 조회 Button 클릭 이벤트
         btn_ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,24 +128,97 @@ public class SubwayActivity extends AppCompatActivity {
                 checked1=listview1.getCheckedItemPosition(); //선택된 리스트뷰(소요산행) 아이템의 id를 저장하는 변수 checked 정의
                 checked2=listview2.getCheckedItemPosition(); //선택된 리스트뷰(서동탄/신창행) 아이템의 id를 저장하는 변수 checked 정의
 
+                //[체크 여부 판단]
                 if(checked1>=0&&checked2>=0){
                     Toast.makeText(getApplicationContext(),"열차 시간은 하나만 선택해주세요",Toast.LENGTH_SHORT).show();
                 }
+                //소요산 행의 경우
                 else if(checked1>=0){
-                    Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
-                    intent5.putExtra("train_info1",adapter1.getTv1(checked1)); //열차 시간 정보
-                    intent5.putExtra("train_info2",adapter1.getTv2(checked1)); //열차 방향 정보
-                    intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
-                    intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
-                    startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
+                    //[서버에서 받은 좌석의 occupied, reservated 정보를 SeatActivity로 전달하는 부분]
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        //서버로부터 데이터를 받음
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);              //서버로부터 받는 데이터는 JSON타입의 객체
+
+                                p41_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(0).getInt("occupied");
+                                p41_re = jsonResponse.getJSONArray("seatJson").getJSONObject(0).getInt("reservated");
+
+                                p42_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(1).getInt("occupied");
+                                p42_re = jsonResponse.getJSONArray("seatJson").getJSONObject(1).getInt("reservated");
+
+                                p43_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(2).getInt("occupied");
+                                p43_re = jsonResponse.getJSONArray("seatJson").getJSONObject(2).getInt("reservated");
+
+                                p44_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(3).getInt("occupied");
+                                p44_re = jsonResponse.getJSONArray("seatJson").getJSONObject(3).getInt("reservated");
+
+                                Intent intent5 = new Intent(SubwayActivity.this,SeatActivity.class);
+                                intent5.putExtra("train_info1",adapter1.getTv1(checked1)); //열차 시간 정보
+                                intent5.putExtra("train_info2",adapter1.getTv2(checked1)); //열차 방향 정보
+                                intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
+                                intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
+                                intent5.putExtra("user_idx",idx); //로그인 사용자 idx 번호
+                                intent5.putExtra("p41_oc", p41_oc); intent5.putExtra("p41_re", p41_re);
+                                intent5.putExtra("p42_oc", p42_oc); intent5.putExtra("p42_re", p42_re);
+                                intent5.putExtra("p43_oc", p43_oc); intent5.putExtra("p43_re", p43_re);
+                                intent5.putExtra("p44_oc", p44_oc); intent5.putExtra("p44_re", p44_re);
+                                SubwayActivity.this.startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+
+                    CurrentSeatRequest currentSeatRequest = new CurrentSeatRequest(responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(SubwayActivity.this);
+                    queue.add(currentSeatRequest);
+
                 }
+                //서동탄/신창 행의 경우
                 else if(checked2>=0){
-                    Intent intent5 = new Intent(getApplicationContext(),SeatActivity.class);
-                    intent5.putExtra("train_info1",adapter2.getTv1(checked2)); //열차 시간 정보
-                    intent5.putExtra("train_info2",adapter2.getTv2(checked2)); //열차 방향 정보
-                    intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
-                    intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
-                    startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
+                    //[서버에서 받은 좌석의 occupied, reservated 정보를 SeatActivity로 전달하는 부분]
+                    Response.Listener<String> responseListener = new Response.Listener<String>() {
+                        //서버로부터 데이터를 받음
+                        @Override
+                        public void onResponse(String response) {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(response);              //서버로부터 받는 데이터는 JSON타입의 객체
+
+                                p41_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(0).getInt("occupied");
+                                p41_re = jsonResponse.getJSONArray("seatJson").getJSONObject(0).getInt("reservated");
+
+                                p42_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(1).getInt("occupied");
+                                p42_re = jsonResponse.getJSONArray("seatJson").getJSONObject(1).getInt("reservated");
+
+                                p43_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(2).getInt("occupied");
+                                p43_re = jsonResponse.getJSONArray("seatJson").getJSONObject(2).getInt("reservated");
+
+                                p44_oc = jsonResponse.getJSONArray("seatJson").getJSONObject(3).getInt("occupied");
+                                p44_re = jsonResponse.getJSONArray("seatJson").getJSONObject(3).getInt("reservated");
+
+                                Intent intent5 = new Intent(SubwayActivity.this,SeatActivity.class);
+                                intent5.putExtra("train_info1",adapter2.getTv1(checked2)); //열차 시간 정보
+                                intent5.putExtra("train_info2",adapter2.getTv2(checked2)); //열차 방향 정보
+                                intent5.putExtra("plat_num1",Spi_num.getSelectedItem().toString());     //승강장 번호
+                                intent5.putExtra("plat_num2",Spi_section.getSelectedItem().toString()); //구간 번호
+                                intent5.putExtra("user_idx",idx); //로그인 사용자 idx 번호
+                                intent5.putExtra("p41_oc", p41_oc); intent5.putExtra("p41_re", p41_re);
+                                intent5.putExtra("p42_oc", p42_oc); intent5.putExtra("p42_re", p42_re);
+                                intent5.putExtra("p43_oc", p43_oc); intent5.putExtra("p43_re", p43_re);
+                                intent5.putExtra("p44_oc", p44_oc); intent5.putExtra("p44_re", p44_re);
+                                SubwayActivity.this.startActivity(intent5); //7번 화면으로 이동 (열차 시간, 방향 정보 전송)
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    };
+                    CurrentSeatRequest currentSeatRequest = new CurrentSeatRequest(responseListener);
+                    RequestQueue queue = Volley.newRequestQueue(SubwayActivity.this);
+                    queue.add(currentSeatRequest);
                 }
                 else Toast.makeText(getApplicationContext(),"열차 시간을 선택해주세요",Toast.LENGTH_SHORT).show();
 
@@ -143,4 +235,47 @@ public class SubwayActivity extends AppCompatActivity {
 
 
     }
+
+
+    public void yourReservating(int user_idx){
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            //서버로부터 데이터를 받음
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);                //서버로부터 받는 데이터는 JSON타입의 객체
+                    boolean success = jsonResponse.getBoolean("success");    //그중 Key값이 "success"인 것을 가져옴
+
+                    if (success) {
+
+                        final int reservating = jsonResponse.getInt("reservating");  // 사용자의 예약 유무
+                        if(reservating==1){
+                            SeatActivity.user_reservating = true;
+                        }else {
+                            SeatActivity.user_reservating = false;
+                        }
+
+                    } else {
+                        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(SubwayActivity.this);
+                        builder.setMessage("서버 통신 오류")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        //② RequestObject 생성 *이때 서버로부터 데이터를 받을 responseListener를 반드시 넘겨준다.
+        MyReservatingRequest myReservatingRequest = new MyReservatingRequest(user_idx, responseListener);
+        //① RequestQueue 생성
+        RequestQueue queue = Volley.newRequestQueue(SubwayActivity.this);
+        //③ 생성된 Object를 RequestQueue로 전달
+        queue.add(myReservatingRequest);
+    }
+
+
+
 }

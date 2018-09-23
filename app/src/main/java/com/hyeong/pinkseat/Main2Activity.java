@@ -51,6 +51,7 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     public void setDefaulteFragment(){
@@ -106,9 +107,9 @@ public class Main2Activity extends AppCompatActivity
             // Handle the camera action
             getSupportActionBar().setTitle("메인");
             fragment = new SearchFragment();
+
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
             transaction.commit();
 
 
@@ -123,36 +124,60 @@ public class Main2Activity extends AppCompatActivity
             // Handle the camera action
             getSupportActionBar().setTitle("어플 이용법");
            fragment = new UsageFragment();
+
+//            //*
+            //플래그먼트 중첩스택 없애기 용
+            String fragmentTag = fragment.getClass().getSimpleName();
+            getSupportFragmentManager().popBackStack(fragmentTag, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(fragmentTag);
             transaction.commit();
 
 
         } else if (id == R.id.nav_status) {
             getSupportActionBar().setTitle("나의 좌석 현황");
             fragment = new MySeatFragment();
+
+//            //*
+//            //플래그먼트 중첩 스택 없애기 용
+            String fragmentTag = fragment.getClass().getSimpleName();
+            getSupportFragmentManager().popBackStack(fragmentTag, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(fragmentTag);
             transaction.commit();
 
 
         } else if (id == R.id.nav_declare) {
             getSupportActionBar().setTitle("신고");
             fragment = new DeclareFragment();
+
+//            //*
+//            //플래그먼트 중첩 스택 없애기 용
+            String fragmentTag = fragment.getClass().getSimpleName();
+            getSupportFragmentManager().popBackStack(fragmentTag, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(fragmentTag);
             transaction.commit();
 
 
         } else if (id == R.id.nav_setting) {
             getSupportActionBar().setTitle("설정");
             fragment = new SettingFragment();
+
+            //*
+            //플래그먼트 중첩 스택 없애기 용
+            String fragmentTag = fragment.getClass().getSimpleName();
+            getSupportFragmentManager().popBackStack(fragmentTag, getSupportFragmentManager().POP_BACK_STACK_INCLUSIVE);
+
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.container, fragment);
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(fragmentTag);
             transaction.commit();
 
 

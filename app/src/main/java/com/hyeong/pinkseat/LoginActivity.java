@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String name = jsonResponse.getString("name");
                                 String date = jsonResponse.getString("date");
                                 String hospital = jsonResponse.getString("hospital");
+                                String reservating = jsonResponse.getString("reservating"); //예약여부
 
                                 //받은 정보를 담아 로그인 후 화면(Main2Activity)으로 인텐트
                                 Intent intent = new Intent(LoginActivity.this, Main2Activity.class);
@@ -66,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("name", name);
                                 intent.putExtra("date", date);
                                 intent.putExtra("hospital", hospital);
+                                intent.putExtra("reservating", reservating);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //액티비티 쌓인 것 제거
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //액티비티 쌓인 것 제거
                                 LoginActivity.this.startActivity(intent);

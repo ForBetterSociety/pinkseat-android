@@ -146,13 +146,19 @@
             android:layout_height="wrap_content"
             android:text="조회"
             android:layout_marginRight="60dp"
+            android:textSize="20dp"
+            android:background="@drawable/ok_btn"
+            android:textColor="@color/colorWhite"
             />
         <Button
             android:id="@+id/btn_No"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="취소"
-            android:layout_toRightOf="@+id/btn_Ok" />
+            android:layout_toRightOf="@+id/btn_Ok"
+            android:textSize="20dp"
+            android:background="@drawable/ok_btn"
+            android:textColor="@color/colorWhite"/>
 
     </RelativeLayout>
 

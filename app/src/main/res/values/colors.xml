@@ -12,6 +12,8 @@
     <color name="colorEmptySeat">#eeaaaf</color>
     <color name="colorNormalSeat">#afabab</color>
     <color name="colorSmothPink">#fceeef</color>
+    <color name="colorReservatedSeat">#e7eeaa</color>
+
 
 
 </resources>
