@@ -7,6 +7,7 @@
     tools:context="com.hyeong.pinkseat.MySeatFragment">
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/lay_myseat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,11 +15,177 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <ListView
-            android:id="@+id/listview2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </ListView>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorNormalSeat" />
+
+            <!--나의 좌석 정보와 제한시간 제목-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="좌석 정보"
+                    android:textSize="20dp"
+
+                    android:layout_marginLeft="100dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제한 시간"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="70dp"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorNormalSeat" />
+
+            <!--나의 좌석 정보와 제한시간 내용-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <!--좌석 정보 텍스트-->
+                <LinearLayout
+                    android:id="@+id/lay_seatinfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="55dp"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/seat_icon" />
+
+                        <LinearLayout
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/seatinfo_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="2018년 01월 01일"
+                                android:textSize="17dp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/seatinfo_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="00:00\n(---행)"
+                                    android:background="@color/colorEmptySeat"
+                                    tools:ignore="HardcodedText" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="1dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical"
+                                    android:background="@color/colorSmothPink">
+
+                                    <TextView
+                                        android:id="@+id/seatinfo_platnum"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:text="[0 - 0~0] 칸" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="좌석번호" />
+
+                                        <TextView
+                                            android:id="@+id/seatinfo_seatnum"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="P00"
+                                            android:textColor="@color/colorFullSeat"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_2"
+                    android:layout_width="1dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_toRightOf="@+id/lay_seatinfo"
+                    android:background="@color/colorNormalSeat" />
+
+                <!--제한시간 텍스트-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:layout_toRightOf="@+id/view_2"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/seatinfo_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="05:00"
+                        android:textSize="30dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="@color/colorNormalSeat" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,23 +193,18 @@
             android:gravity="center_horizontal">
 
             <Button
-                android:id="@+id/btn_ok2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorEmptySeat"
-                android:text="확인" />
-
-            <Button
                 android:id="@+id/btn_cancle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:backgroundTint="@color/colorEmptySeat"
-                android:text="취소" />
+                android:background="@drawable/ok_btn"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:text="예약 취소" />
 
         </LinearLayout>
 
         <View
+            android:id="@+id/myseat_view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_margin="10dp"

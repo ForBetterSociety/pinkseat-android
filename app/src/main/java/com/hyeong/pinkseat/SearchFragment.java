@@ -50,10 +50,15 @@ public class SearchFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_search,container,false);
         Button suwon = (Button)v.findViewById(R.id.suwon);
 
+        //로그인한 사용자의 정보를 받아옴
+        Intent intent = getActivity().getIntent();
+        final String idx = intent.getStringExtra("user_idx");
+
         suwon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getActivity(),SubwayActivity.class);
+                intent1.putExtra("user_idx", idx);
                 startActivity(intent1);
             }
         });
