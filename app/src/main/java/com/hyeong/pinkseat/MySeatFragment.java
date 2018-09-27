@@ -1,6 +1,7 @@
 package com.hyeong.pinkseat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -84,11 +85,11 @@ public class MySeatFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // 로그인한 사용자의 user_idx 받음
-//        Intent intent = getActivity().getIntent();
-//        idx = intent.getStringExtra("user_idx");
-        idx = AutoLoginPreference.getIdx(getActivity()).toString();  //자동 로그인으로 저장된 사용자의 user_idx를 받음
-
+        //로그인한 사용자의 정보를 받아옴
+        Intent intent = getActivity().getIntent();
+        if(intent.getStringExtra("user_idx")==null){
+            idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+        }else {idx = intent.getStringExtra("user_idx");}
     }
 
     @Override
