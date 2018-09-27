@@ -23,9 +23,18 @@ public class SettingFragment extends Fragment {
     TextView tv_name, tv_date, tv_hospital, tv_code;
     Button btn_delete_account;
 
+    String idx, name, date, hospital;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //로그인한 사용자의 정보를 받아옴
+        Intent intent = getActivity().getIntent();
+        if(intent.getStringExtra("user_idx")==null){
+            idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+        }else { idx = intent.getStringExtra("user_idx");
+        }
 
     }
 
@@ -43,23 +52,66 @@ public class SettingFragment extends Fragment {
 
         btn_delete_account = (Button) v.findViewById(R.id.btn_delaccount);
 
-        //로그인한 사용자의 정보를 받아옴
-        Intent intent = getActivity().getIntent();
-//        final String idx = intent.getStringExtra("user_idx");
-        final String idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
-        final String name = intent.getStringExtra("name");
-        final String date = intent.getStringExtra("date");
-        final String hospital = intent.getStringExtra("hospital");
+        Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+            //서버로부터 데이터를 받음
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);                //서버로부터 받는 데이터는 JSON타입의 객체
+                    boolean success = jsonResponse.getBoolean("success");    //그중 Key값이 "success"인 것을 가져옴
 
-        tv_name.setText(name+" 산모님");
-        tv_date.setText(date);
-        tv_hospital.setText(hospital);
+                    if (success) {
+                        name = jsonResponse.getString("name");
+                        date = jsonResponse.getString("date");
+                        hospital = jsonResponse.getString("hospital");
+                        tv_name.setText(name+" 산모님");
+                        tv_date.setText(date);
+                        tv_hospital.setText(hospital);
+                    } else {
+                        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getActivity());
+                        builder.setMessage("서버 통신 오류")
+                                .setNegativeButton("Retry", null)
+                                .create()
+                                .show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        MyInfoRequest myInfoRequest = new MyInfoRequest(Integer.parseInt(idx), responseListener1);
+        RequestQueue queue1 = Volley.newRequestQueue(getActivity());
+        queue1.add(myInfoRequest);
+
+//        tv_name.setText(name+" 산모님");
+//        tv_date.setText(date);
+//        tv_hospital.setText(hospital);
         tv_code.setText("P0000"+idx);
 
         //[인증해제 버튼] 클릭 이벤트 (계정삭제)
         btn_delete_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //예약 취소 리스터
+                Response.Listener<String> responseListener1 = new Response.Listener<String>() {
+                    //서버로부터 데이터를 받음
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);              //서버로부터 받는 데이터는 JSON타입의 객체
+                            boolean success = jsonResponse.getBoolean("success");  //그중 Key값이 "success"인 것을 가져옴
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                CancleSeatRequest cancleseatRequest = new CancleSeatRequest(Integer.parseInt(idx.toString()), responseListener1);
+                RequestQueue queue1 = Volley.newRequestQueue(getActivity());
+                queue1.add(cancleseatRequest);
 
                 //계정 삭제 리스너
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

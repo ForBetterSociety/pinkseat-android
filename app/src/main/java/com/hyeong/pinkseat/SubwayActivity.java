@@ -49,7 +49,12 @@ public class SubwayActivity extends AppCompatActivity {
 
         //Intent intent_5 = getIntent(); //6번의 인텐트 수신
         //idx = intent_5.getStringExtra("user_idx");
-        idx = AutoLoginPreference.getIdx(this).toString();  //자동 로그인으로 저장된 사용자의 user_idx를 받음
+
+        //로그인한 사용자의 정보를 받아옴
+        Intent intent = SubwayActivity.this.getIntent();
+        if(intent.getStringExtra("user_idx")==null){
+            idx = AutoLoginPreference.getIdx(SubwayActivity.this).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+        }else {idx = intent.getStringExtra("user_idx");}
 
         /*** [탭 메뉴 설정] ***/
         TabHost tabHost1 = (TabHost) findViewById(R.id.tabhost1);
@@ -270,11 +275,11 @@ public class SubwayActivity extends AppCompatActivity {
         };
 
         //② RequestObject 생성 *이때 서버로부터 데이터를 받을 responseListener를 반드시 넘겨준다.
-        MyReservatingRequest myReservatingRequest = new MyReservatingRequest(user_idx, responseListener);
+        MyInfoRequest myInfoRequest = new MyInfoRequest(user_idx, responseListener);
         //① RequestQueue 생성
         RequestQueue queue = Volley.newRequestQueue(SubwayActivity.this);
         //③ 생성된 Object를 RequestQueue로 전달
-        queue.add(myReservatingRequest);
+        queue.add(myInfoRequest);
     }
 
 

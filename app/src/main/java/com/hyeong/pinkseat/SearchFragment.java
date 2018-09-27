@@ -11,6 +11,8 @@ import android.widget.Button;
 
 public class SearchFragment extends Fragment {
 
+    String idx;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +28,10 @@ public class SearchFragment extends Fragment {
         Button logout = (Button)v.findViewById(R.id.btn_logout);
 
         //로그인한 사용자의 정보를 받아옴
-//        Intent intent = getActivity().getIntent();
-//        final String idx = intent.getStringExtra("user_idx");
-
-        final String idx = AutoLoginPreference.getIdx(getActivity()).toString();  //자동 로그인으로 저장된 사용자의 user_idx를 받음
+        Intent intent = getActivity().getIntent();
+        if(intent.getStringExtra("user_idx")==null){
+            idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+        } else {idx = intent.getStringExtra("user_idx");}
 
 
         logout.setOnClickListener(new View.OnClickListener() {
