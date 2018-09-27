@@ -47,8 +47,9 @@ public class SubwayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subway);
 
-        Intent intent_5 = getIntent(); //6번의 인텐트 수신
-        idx = intent_5.getStringExtra("user_idx");
+        //Intent intent_5 = getIntent(); //6번의 인텐트 수신
+        //idx = intent_5.getStringExtra("user_idx");
+        idx = AutoLoginPreference.getIdx(this).toString();  //자동 로그인으로 저장된 사용자의 user_idx를 받음
 
         /*** [탭 메뉴 설정] ***/
         TabHost tabHost1 = (TabHost) findViewById(R.id.tabhost1);

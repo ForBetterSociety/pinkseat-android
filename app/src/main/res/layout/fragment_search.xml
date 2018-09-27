@@ -8,6 +8,16 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ok_btn"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp"
+            android:text="로그아웃"/>
+
         <Button
             android:id="@+id/suwon"
             android:layout_width="20dp"
