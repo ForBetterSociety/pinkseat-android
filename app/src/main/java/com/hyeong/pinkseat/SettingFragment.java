@@ -45,7 +45,8 @@ public class SettingFragment extends Fragment {
 
         //로그인한 사용자의 정보를 받아옴
         Intent intent = getActivity().getIntent();
-        final String idx = intent.getStringExtra("user_idx");
+//        final String idx = intent.getStringExtra("user_idx");
+        final String idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
         final String name = intent.getStringExtra("name");
         final String date = intent.getStringExtra("date");
         final String hospital = intent.getStringExtra("hospital");
@@ -71,6 +72,7 @@ public class SettingFragment extends Fragment {
 
                             //계정 삭제 성공 시, 로그인 화면으로 인텐트(계정삭제 성공시 success값이 true)
                             if (success){
+                                AutoLoginPreference.clearLogin(getActivity());
                                 Intent intent = new Intent(getActivity(),LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //액티비티 쌓인 것 제거
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //액티비티 쌓인 것 제거

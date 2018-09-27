@@ -1,7 +1,6 @@
 package com.hyeong.pinkseat;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
@@ -45,7 +44,7 @@ import java.util.Date;
 public class MySeatFragment extends Fragment {
 
     //착석여부를 저장하는 변수
-    int isOccupied;
+    static int isOccupied;
 
     // 초 단위 변환을 위한 변수
     CountDownTimer countDownTimer;
@@ -86,8 +85,9 @@ public class MySeatFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // 로그인한 사용자의 user_idx 받음
-        Intent intent = getActivity().getIntent();
-        idx = intent.getStringExtra("user_idx");
+//        Intent intent = getActivity().getIntent();
+//        idx = intent.getStringExtra("user_idx");
+        idx = AutoLoginPreference.getIdx(getActivity()).toString();  //자동 로그인으로 저장된 사용자의 user_idx를 받음
 
     }
 
@@ -262,6 +262,7 @@ public class MySeatFragment extends Fragment {
                                     cancel();
                                     seatinfo_timer.setText("착석완료");
                                     seatinfo_timer.setTextSize(20);
+                                    seatinfo_timer.setTextColor(getResources().getColorStateList(R.color.colorPrimary));
                                     btn_cansle.setVisibility(View.GONE);
                                     myseat_view.setVisibility(View.GONE);
                                 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
@@ -35,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText edit_id = (EditText) findViewById(R.id.login_id);
         final EditText edit_pw = (EditText) findViewById(R.id.login_pw);
+
+        final CheckBox auto_login = (CheckBox) findViewById(R.id.auto_login);  //자동 로그인 체크박스
 
         //[OK 버튼] 클릭 이벤트 (로그인)
         Login_ok.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +71,12 @@ public class LoginActivity extends AppCompatActivity {
                                 intent.putExtra("date", date);
                                 intent.putExtra("hospital", hospital);
                                 intent.putExtra("reservating", reservating);
+
+                                //자동 로그인 시, 정보 저장
+                                if(auto_login.isChecked()){
+                                    AutoLoginPreference.setUser(LoginActivity.this, id, pw, hospital, name, date,idx);
+                                }
+
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //액티비티 쌓인 것 제거
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //액티비티 쌓인 것 제거
                                 LoginActivity.this.startActivity(intent);
