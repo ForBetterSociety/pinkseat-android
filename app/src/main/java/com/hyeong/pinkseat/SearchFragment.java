@@ -25,7 +25,6 @@ public class SearchFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_search,container,false);
         Button suwon = (Button)v.findViewById(R.id.suwon);
-        Button logout = (Button)v.findViewById(R.id.btn_logout);
 
         //로그인한 사용자의 정보를 받아옴
         Intent intent = getActivity().getIntent();
@@ -33,17 +32,6 @@ public class SearchFragment extends Fragment {
             idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
         } else {idx = intent.getStringExtra("user_idx");}
 
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AutoLoginPreference.clearLogin(getActivity());
-                Intent intent = new Intent(getActivity(),LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //액티비티 쌓인 것 제거
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //액티비티 쌓인 것 제거
-                startActivity(intent);
-            }
-        });
 
         suwon.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,7 +21,7 @@ import org.json.JSONObject;
 public class SettingFragment extends Fragment {
 
     TextView tv_name, tv_date, tv_hospital, tv_code;
-    Button btn_delete_account;
+    Button btn_delete_account, logout;
 
     String idx, name, date, hospital;
 
@@ -51,6 +51,8 @@ public class SettingFragment extends Fragment {
         tv_code = (TextView) v.findViewById(R.id.set_code);
 
         btn_delete_account = (Button) v.findViewById(R.id.btn_delaccount);
+        logout = (Button)v.findViewById(R.id.btn_logout);
+
 
         Response.Listener<String> responseListener1 = new Response.Listener<String>() {
             //서버로부터 데이터를 받음
@@ -88,6 +90,18 @@ public class SettingFragment extends Fragment {
 //        tv_date.setText(date);
 //        tv_hospital.setText(hospital);
         tv_code.setText("P0000"+idx);
+
+        //[로그아웃 버튼] 클릭 이벤트 (로그아웃)
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AutoLoginPreference.clearLogin(getActivity());
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK); //액티비티 쌓인 것 제거
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);   //액티비티 쌓인 것 제거
+                startActivity(intent);
+            }
+        });
 
         //[인증해제 버튼] 클릭 이벤트 (계정삭제)
         btn_delete_account.setOnClickListener(new View.OnClickListener() {
