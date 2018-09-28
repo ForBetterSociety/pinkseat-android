@@ -3,17 +3,15 @@ package com.hyeong.pinkseat;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -47,12 +45,6 @@ public class MySeatFragment extends Fragment {
     //착석여부를 저장하는 변수
     static int isOccupied;
 
-    // 초 단위 변환을 위한 변수
-    CountDownTimer countDownTimer;
-    final int MILLISINFUTURE = 300 * 1000; //총 시간 (300초 = 5분)
-    //final int MILLISINFUTURE = 5 * 1000; // TEST용  총 시간 (5초)
-    final int COUNT_DOWN_INTERVAL = 1000; //onTick 메소드를 호출할 간격 (1초)
-
     //user_idx 담을 변수
     String idx;
 
@@ -72,10 +64,11 @@ public class MySeatFragment extends Fragment {
     public String seat_num;
 
     //내 좌석 정보 띄울 텍스트뷰
-    TextView seatinfo_date, seatinfo_time, seatinfo_platnum, seatinfo_seatnum, seatinfo_timer;
+    TextView seatinfo_date, seatinfo_time, seatinfo_platnum, seatinfo_seatnum, seatinfo_occupied;
 
     //버튼 변수
     Button btn_cansle;
+    ImageButton btn_replay;
     View myseat_view;
 
     protected void Update() {
@@ -104,7 +97,7 @@ public class MySeatFragment extends Fragment {
         seatinfo_time = (TextView) v.findViewById(R.id.seatinfo_time);
         seatinfo_platnum = (TextView) v.findViewById(R.id.seatinfo_platnum);
         seatinfo_seatnum = (TextView) v.findViewById(R.id.seatinfo_seatnum);
-        seatinfo_timer = (TextView) v.findViewById(R.id.seatinfo_timer);
+        seatinfo_occupied = (TextView) v.findViewById(R.id.seatinfo_occupied);
 
         /*** [빈 화면 출력용 객체] ***/
         emptyview = (TextView) v.findViewById(R.id.empty_view);
@@ -112,6 +105,7 @@ public class MySeatFragment extends Fragment {
 
         //*** [버튼용 객체] ***//
         btn_cansle = (Button) v.findViewById(R.id.btn_cancle);
+        btn_replay = (ImageButton) v.findViewById(R.id.btn_replay);
         myseat_view = (View) v.findViewById(R.id.myseat_view);
 
         Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -138,11 +132,25 @@ public class MySeatFragment extends Fragment {
                         seatinfo_date.setText(today);
                         seatinfo_platnum.setText(plat_info);
                         seatinfo_seatnum.setText(seat_num);
-                        seatinfo_timer.setText("05:00");
+                        seatinfo_occupied.setText("미착석");
+                        seatinfo_occupied.setTextSize(25);
+                        seatinfo_occupied.setTextColor(getResources().getColorStateList(R.color.colorNormalSeat));
+
+                        btn_cansle.setVisibility(View.VISIBLE);
+                        myseat_view.setVisibility(View.VISIBLE);
+
+                        isOccupied = jsonResponse.getInt("occupied");  // 착석 여부
+                        //착석 여부=1이면, finish();
+                        if(isOccupied==1) {
+                            seatinfo_occupied.setText("착석완료");
+                            seatinfo_occupied.setTextSize(20);
+                            seatinfo_occupied.setTextColor(getResources().getColorStateList(R.color.colorPrimary));
+                            btn_cansle.setVisibility(View.GONE);
+                            myseat_view.setVisibility(View.GONE);
+                        }
 
                         lay_myseat.setVisibility(View.VISIBLE);
                         emptyview.setVisibility(View.GONE); //좌석이 있다면, empty_view 없애기
-                        countDownTimer();
 
                     }
                     else { //예약 정보 없는 경우
@@ -221,32 +229,10 @@ public class MySeatFragment extends Fragment {
             }
         });
 
-        return v;
-    }
-
-    //오늘 날짜 얻는 함수
-    private String getTime() {
-        mNow = System.currentTimeMillis();
-        mDate = new Date(mNow);
-        return mFormat.format(mDate);
-    }
-
-    public void countDownTimer() { //카운트 다운 메소드
-        seatinfo_timer = (TextView) getActivity().findViewById(R.id.seatinfo_timer);
-
-        countDownTimer = new CountDownTimer(MILLISINFUTURE, COUNT_DOWN_INTERVAL) {
+        //새로고침 버튼
+        btn_replay.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onTick(long millisUntilFinished) { //(300초에서 1초 마다 계속 줄어듬)
-
-                long TimeCount = millisUntilFinished / 1000;
-                Log.d("남은시간(초):", TimeCount + "");
-
-                if ((TimeCount - ((TimeCount / 60) * 60)) >= 10) { //초가 10보다 크면 그냥 출력
-                    seatinfo_timer.setText((TimeCount / 60) + " : " + (TimeCount - ((TimeCount / 60) * 60)));
-                } else { //초가 10보다 작으면 앞에 '0' 붙여서 같이 출력. ex) 02,03,04...
-                    seatinfo_timer.setText((TimeCount / 60) + " : 0" + (TimeCount - ((TimeCount / 60) * 60)));
-                }
-
+            public void onClick(View view) {
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     //서버로부터 데이터를 받음
                     @Override
@@ -257,16 +243,45 @@ public class MySeatFragment extends Fragment {
 
                             // 예약 정보 있는 경우
                             if (success) {
-                                isOccupied = jsonResponse.getInt("occupied");  // 예약한 좌석 번호
+
+                                seat_num = jsonResponse.getString("seat_num");  // 예약한 좌석 번호
+                                train_info1 = jsonResponse.getString("train_time"); //열차 시간
+                                train_info2 = jsonResponse.getString("train_dir");  //열차 방향
+                                plat_num = jsonResponse.getString("plat_num");    //승강장 번호
+                                plat_dir = jsonResponse.getString("plat_dir");     //구간 번호
+
+                                today = getTime().toString(); //오늘 날짜
+                                train_time = train_info1 + "\n(" + train_info2;
+                                plat_info = "["+plat_num+" - "+plat_dir+"칸]";
+
+                                seatinfo_time.setText(train_time);
+                                seatinfo_date.setText(today);
+                                seatinfo_platnum.setText(plat_info);
+                                seatinfo_seatnum.setText(seat_num);
+                                seatinfo_occupied.setText("미착석");
+                                seatinfo_occupied.setTextSize(25);
+                                seatinfo_occupied.setTextColor(getResources().getColorStateList(R.color.colorNormalSeat));
+
+                                btn_cansle.setVisibility(View.VISIBLE);
+                                myseat_view.setVisibility(View.VISIBLE);
+
+                                isOccupied = jsonResponse.getInt("occupied");  // 착석 여부
                                 //착석 여부=1이면, finish();
                                 if(isOccupied==1) {
-                                    cancel();
-                                    seatinfo_timer.setText("착석완료");
-                                    seatinfo_timer.setTextSize(20);
-                                    seatinfo_timer.setTextColor(getResources().getColorStateList(R.color.colorPrimary));
+                                    seatinfo_occupied.setText("착석완료");
+                                    seatinfo_occupied.setTextSize(20);
+                                    seatinfo_occupied.setTextColor(getResources().getColorStateList(R.color.colorPrimary));
                                     btn_cansle.setVisibility(View.GONE);
                                     myseat_view.setVisibility(View.GONE);
                                 }
+
+                                lay_myseat.setVisibility(View.VISIBLE);
+                                emptyview.setVisibility(View.GONE); //좌석이 있다면, empty_view 없애기
+
+                            }
+                            else { //예약 정보 없는 경우
+                                lay_myseat.setVisibility(View.GONE);
+                                emptyview.setVisibility(View.VISIBLE); //좌석이 없다면, empty_view 보이기
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -276,52 +291,27 @@ public class MySeatFragment extends Fragment {
 
                 };
 
+
                 //② RequestObject 생성 *이때 서버로부터 데이터를 받을 responseListener를 반드시 넘겨준다.
                 MyReservatedSeatRequest myReservatedSeatRequest = new MyReservatedSeatRequest(Integer.parseInt(idx.toString()), responseListener);
+
                 //① RequestQueue 생성
                 RequestQueue queue = Volley.newRequestQueue(getActivity());
+
                 //③ 생성된 Object를 RequestQueue로 전달
                 queue.add(myReservatedSeatRequest);
-
-
             }
+        });
 
-            @Override
-            public void onFinish() { //시간이 다 되면 다이얼로그 종료
-                seatinfo_timer.setTextSize(18);
-                Toast.makeText(getActivity(), "시간이 초과되어 예약이 취소되었습니다.", Toast.LENGTH_SHORT).show();
-                    //# 예약 취소 메소드 출력
-                lay_myseat.setVisibility(View.GONE);
-                emptyview.setVisibility(View.VISIBLE); //예약 취소한 경우, empty_view 보이기
-
-                //예약취소 post (정상작동함. 나중에 주석 해제)
-//
-//                //④ Callback 처리부분 (volley 사용을 위한 ResponseListener 구현 부분)
-//                Response.Listener<String> responseListener = new Response.Listener<String>() {
-//                    //서버로부터 데이터를 받음
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//                            JSONObject jsonResponse = new JSONObject(response);              //서버로부터 받는 데이터는 JSON타입의 객체
-//                            boolean success = jsonResponse.getBoolean("success");  //그중 Key값이 "success"인 것을 가져옴
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                };
-//
-//                //② RequestObject 생성 *이때 서버로부터 데이터를 받을 responseListener를 반드시 넘겨준다.
-//                CancleSeatRequest cancleseatRequest = new CancleSeatRequest(Integer.parseInt(idx.toString()), responseListener);
-//
-//                //① RequestQueue 생성
-//                RequestQueue queue = Volley.newRequestQueue(getActivity());
-//
-//                //③ 생성된 Object를 RequestQueue로 전달
-//                queue.add(cancleseatRequest);
-            }
-        }.start();
-
+        return v;
     }
+
+    //오늘 날짜 얻는 함수
+    private String getTime() {
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
 }
 

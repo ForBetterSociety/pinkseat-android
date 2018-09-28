@@ -115,7 +115,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Step1"
+                    android:text="Step4"
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
@@ -123,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="제한된 시간내에 착석하면 끝!"
+                    android:text="예약한 좌석에 착석하면 끝!"
                     android:textSize="20dp" />
             </LinearLayout>
 
@@ -158,13 +158,13 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Q1. 제한시간 내로 착석하지 못했어요"
+                        android:text="Q1. 다른 자리를 예약하고 싶어요"
                         android:textSize="20dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=":  이용할 열차와 좌석을 선택하면,\n 제한시간이 다시 주어지며 착석이 가능합니다."
+                        android:text=":  예약취소 버튼을 통해 예약을 취소하시고,\n   다른 좌석을 다시 예약하시면 됩니다."
                         android:textColor="@color/colorPrimary"
                         android:textSize="15dp" />
 
