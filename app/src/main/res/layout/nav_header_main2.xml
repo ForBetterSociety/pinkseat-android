@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lay_nav_name"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/nav_header_height"
@@ -24,8 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OOO"
-        android:textColor="@color/colorBlack"
-        android:textSize="40dp"
+        android:textColor="@color/colorEmptySeat"
+        android:textSize="35dp"
+        android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 
@@ -34,7 +36,7 @@
         android:layout_height="wrap_content"
         android:text="산모님"
         android:textColor="@color/colorBlack"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <View

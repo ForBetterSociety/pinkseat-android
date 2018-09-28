@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import kr.go.seoul.trafficsubway.TrafficSubwayDetailTypeB;
 
@@ -79,6 +80,18 @@ public class Main2Activity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main2, menu);
+
+        // [메뉴의 산모님 이름 변경]
+        TextView menu_name = (TextView) findViewById(R.id.menu_name);
+        String name;
+        //로그인한 사용자의 정보를 받아옴
+        Intent intent1 = getIntent();
+        if(intent1.getStringExtra("name")==null){
+            name = AutoLoginPreference.getName(this).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+        }else { name = intent1.getStringExtra("name");
+        }
+        menu_name.setText(name);
+
         return true;
     }
 
