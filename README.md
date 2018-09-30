@@ -24,5 +24,5 @@
 >서울시 공공앱 주요기능 API 中 '지하철 Full B type' API
 https://mplatform.seoul.go.kr/api/info/apiIntroTraffic.do#
 
-## 4. Apps View
+## 3. Apps View
 ![image](https://user-images.githubusercontent.com/28644251/46254922-fefcf600-c4d1-11e8-9556-2212b998fdde.png)
