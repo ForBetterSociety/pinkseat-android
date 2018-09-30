@@ -17,7 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import kr.go.seoul.trafficsubway.TrafficSubwayDetailTypeB;
+import com.hyeong.pinkseat.WebView.TrafficSubwayDetail;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -129,7 +129,7 @@ public class Main2Activity extends AppCompatActivity
         }else if (id == R.id.nav_pregnant) {
             // Handle the camera action
             getSupportActionBar().setTitle("임산부석 선택");
-            Intent intent = new Intent(this, TrafficSubwayDetailTypeB.class);
+            Intent intent = new Intent(this, TrafficSubwayDetail.class);
             intent.putExtra("OpenAPIKey","7173524e7073687a3930737a47506a");
             startActivity(intent);
             finish();

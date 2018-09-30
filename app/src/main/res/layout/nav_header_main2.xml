@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="OOO"
         android:textColor="@color/colorEmptySeat"
-        android:textSize="35dp"
+        android:textSize="30dp"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

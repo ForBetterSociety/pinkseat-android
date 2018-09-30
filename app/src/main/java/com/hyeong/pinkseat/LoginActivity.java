@@ -2,6 +2,7 @@ package com.hyeong.pinkseat;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,10 +25,66 @@ import org.json.JSONObject;
 
 // <로그인 화면>
 public class LoginActivity extends AppCompatActivity {
+
+    EditText et_id, et_pw;
+    CheckBox chk_auto;
+    Button btn_login;
+    SharedPreferences setting;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        et_id = (EditText) findViewById(R.id.login_id);
+        et_pw = (EditText) findViewById(R.id.login_pw);
+       // chk_auto = (CheckBox) findViewById(R.id.automatic_login);
+        btn_login = (Button) findViewById(R.id.login_ok);
+
+        setting = getSharedPreferences("setting", 0); //기록할 파일들 불러오기
+        editor= setting.edit();
+
+
+
+        if(setting.getBoolean("chk_auto", false)){
+            et_id.setText(setting.getString("ID", ""));
+            et_pw.setText(setting.getString("PW", ""));
+            chk_auto.setChecked(true);
+
+        }
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(chk_auto.isChecked()){
+                   // Toast.makeText(this, "로그인", Toast.LENGTH_SHORT).show();
+                    String ID = et_id.getText().toString();
+                    String PW = et_pw.getText().toString();
+
+                    editor.putString("ID", ID);
+                    editor.putString("PW", PW);
+                    editor.putBoolean("chk_auto", true);
+                    editor.commit();
+
+                }else{
+                    editor.clear();
+                    editor.commit();
+                }
+
+            }
+        });
+        if(setting.getBoolean("Auto_Login_enabled", false)){
+            et_id.setText(setting.getString("ID", ""));
+            et_pw.setText(setting.getString("PW", ""));
+            chk_auto.setChecked(true);
+        }
+
+
+
+
 
         getSupportActionBar().setTitle("임산부 인증");
 
@@ -116,5 +173,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
 }

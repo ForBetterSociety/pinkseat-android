@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.hyeong.pinkseat.SearchFragment"
-    android:background="@color/colorWhite">
+    android:background="@drawable/subway_one">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -11,8 +11,8 @@
 
         <Button
             android:id="@+id/suwon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginLeft="295dp"
             android:layout_marginTop="410dp"
             android:background="@color/colorBlack"/>

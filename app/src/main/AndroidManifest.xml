@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            android:label="회원가입"  />
         <activity android:name=".ConfirmLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +30,7 @@
         <activity android:name=".SeatActivity" />
         <activity android:name=".SubwayLineActivity" />
         <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".WebView.TrafficSubwayDetail" />
     </application>
 
 </manifest>

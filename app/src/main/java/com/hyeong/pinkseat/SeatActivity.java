@@ -2,6 +2,7 @@ package com.hyeong.pinkseat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -175,7 +176,6 @@ public class SeatActivity extends AppCompatActivity {
             }
 
     }
-
 
     //착석 가능 자리(버튼) 선택시 호출되는 함수
     public void Seat(final Button btn){
