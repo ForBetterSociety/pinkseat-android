@@ -6,14 +6,14 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorBlack">#000000</color>
     <color name="textColorPrimary">#ffffff</color>
+    <color name="colorGray">#8c8989</color>
 
     <!--좌석 현황 색상-->
     <color name="colorFullSeat">#e26c74</color>
     <color name="colorEmptySeat">#eeaaaf</color>
     <color name="colorNormalSeat">#afabab</color>
     <color name="colorSmothPink">#fceeef</color>
-    <color name="colorReservatedSeat">#e7eeaa</color>
-
+    <color name="colorReservatedSeat">#e2e8b2</color>
 
 
 </resources>

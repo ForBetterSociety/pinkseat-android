@@ -15,9 +15,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/brown"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/smile"
         android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OOO"
-        android:textColor="@color/colorEmptySeat"
+        android:textColor="@color/colorGray"
         android:textSize="35dp"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
