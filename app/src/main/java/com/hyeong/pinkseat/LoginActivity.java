@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //액션 바 설정
+        getSupportActionBar().hide();
 
         et_id = (EditText) findViewById(R.id.login_id);
         et_pw = (EditText) findViewById(R.id.login_pw);
