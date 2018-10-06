@@ -3,6 +3,7 @@ package com.hyeong.pinkseat;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,11 @@ public class JoinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join);
 
-        getSupportActionBar().setTitle("임산부 인증");
+//        getSupportActionBar().setTitle("임산부 인증");
+
+        //커스텀 바 설정
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.bar_join);
 
         //init();
 

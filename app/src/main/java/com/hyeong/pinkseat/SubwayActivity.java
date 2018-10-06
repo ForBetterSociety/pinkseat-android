@@ -2,6 +2,7 @@ package com.hyeong.pinkseat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -40,21 +41,32 @@ public class SubwayActivity extends AppCompatActivity {
     int p41_oc, p41_re, p42_oc, p42_re, p43_oc, p43_re, p44_oc, p44_re;
 
     // user_idx 받을 변수
-    String idx = "";
+    String idx = SearchFragment.static_user_idx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subway);
 
+//        getSupportActionBar().setTitle("열차 선택");
+
+        //커스텀 바 설정
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.bar_subway);
+
         //Intent intent_5 = getIntent(); //6번의 인텐트 수신
         //idx = intent_5.getStringExtra("user_idx");
 
         //로그인한 사용자의 정보를 받아옴
-        Intent intent = SubwayActivity.this.getIntent();
-        if(intent.getStringExtra("user_idx")==null){
-            idx = AutoLoginPreference.getIdx(SubwayActivity.this).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
-        }else {idx = intent.getStringExtra("user_idx");}
+//        Intent intent = SubwayActivity.this.getIntent();
+//        if(intent.getStringExtra("user_idx")==null){
+//            idx = AutoLoginPreference.getIdx(SubwayActivity.this).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
+//        }else {idx = intent.getStringExtra("user_idx");}
+
+//        if(AutoLoginPreference.getIdx(SubwayActivity.this).toString()==null){
+//            idx=SearchFragment.static_user_idx.toString();
+//        }else {idx = AutoLoginPreference.getIdx(SubwayActivity.this).toString();}
+
 
         /*** [탭 메뉴 설정] ***/
         TabHost tabHost1 = (TabHost) findViewById(R.id.tabhost1);
@@ -88,23 +100,49 @@ public class SubwayActivity extends AppCompatActivity {
         // 아이템 추가
         // 소요산 행
         adapter1.addItem("05:10","광운대행");
-        adapter1.addItem("05:34","청량리행");
+        adapter1.addItem("05:24","광운대행");
+        adapter1.addItem("05:37","광운대행");
         adapter1.addItem("05:47","광운대행");
-        adapter1.addItem("05:57","청량리행");
-        adapter1.addItem("06:07","광운대행");
-        adapter1.addItem("06:19","광운대행");
-        adapter1.addItem("06:29","광운대행");
-        adapter1.addItem("06:39","청량리행");
+        adapter1.addItem("05:57","광운대행");
+        adapter1.addItem("06:05","광운대행");
+        adapter1.addItem("06:13","청량리행");
+        adapter1.addItem("06:18","광운대행");
+        adapter1.addItem("06:26","광운대행");
+        adapter1.addItem("06:32","광운대행");
+        adapter1.addItem("06:36","서울역행(급)");
+        adapter1.addItem("06:41","청량리행");
+        adapter1.addItem("06:47","광운대행");
+        adapter1.addItem("06:53","광운대행");
+        adapter1.addItem("06:59","광운대행");
+        adapter1.addItem("07:06","광운대행");
+        adapter1.addItem("07:13","광운대행");
+        adapter1.addItem("07:18","광운대행");
+        adapter1.addItem("07:22","서울역행(급)");
+        adapter1.addItem("07:26","광운대행");
+        adapter1.addItem("07:33","청량리행");
+        adapter1.addItem("07:40","광운대행");
+        adapter1.addItem("07:54","광운대행");
+
 
         //서동탄/신창 행
         adapter2.addItem("05:41","신창행");
-        adapter2.addItem("05:58","서동탄행");
-        adapter2.addItem("06:08","신창행");
-        adapter2.addItem("06:22","서동탄행");
-        adapter2.addItem("06:32","신창행");
+        adapter2.addItem("06:00","신창행");
+        adapter2.addItem("06:13","천안행");
+        adapter2.addItem("06:23","서동탄행");
+        adapter2.addItem("06:31","천안행");
+        adapter2.addItem("06:37","서동탄행");
+        adapter2.addItem("06:40","신창행(급)");
         adapter2.addItem("06:44","서동탄행");
-        adapter2.addItem("06:52","천안행(급)");
-        adapter2.addItem("06:57","신창행");
+        adapter2.addItem("06:57","서동탄행");
+        adapter2.addItem("07:07","천안행");
+        adapter2.addItem("07:16","서동탄행");
+        adapter2.addItem("07:22","신창행");
+        adapter2.addItem("07:30","서동탄행");
+        adapter2.addItem("07:37","천안행");
+        adapter2.addItem("07:44","서동탄행");
+        adapter2.addItem("07:52","서동탄행");
+
+
 
         /*** [스피너 설정] ***/
         // 승강장 번호 스피너

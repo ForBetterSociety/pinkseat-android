@@ -17,10 +17,10 @@ public class DeleteAccountRequest extends StringRequest {
     private Map<String, String> params;
 
     //생성자
-    public DeleteAccountRequest(String idx, Response.Listener<String> listener) {
+    public DeleteAccountRequest(int idx, Response.Listener<String> listener) {
         super(Method.POST, DELETE_REQUEST_URL, listener, null);
         params = new HashMap<>();
-        params.put("user_idx", idx);
+        params.put("user_idx", idx+"");
     }
 
     //추후 사용을 위한 부분

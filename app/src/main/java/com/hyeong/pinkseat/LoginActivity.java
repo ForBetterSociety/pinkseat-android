@@ -83,11 +83,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-
-
-
-        getSupportActionBar().setTitle("임산부 인증");
-
         Button Login_ok = (Button) findViewById(R.id.login_ok);
         Button Join = (Button) findViewById(R.id.join);
 
