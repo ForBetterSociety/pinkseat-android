@@ -125,7 +125,7 @@ public class MySeatFragment extends Fragment {
                         plat_dir = jsonResponse.getString("plat_dir");     //구간 번호
 
                         today = getTime().toString(); //오늘 날짜
-                        train_time = train_info1 + "\n(" + train_info2;
+                        train_time = train_info1 + "\n(" + train_info2+")";
                         plat_info = "["+plat_num+" - "+plat_dir+"칸]";
 
                         seatinfo_time.setText(train_time);
@@ -251,7 +251,7 @@ public class MySeatFragment extends Fragment {
                                 plat_dir = jsonResponse.getString("plat_dir");     //구간 번호
 
                                 today = getTime().toString(); //오늘 날짜
-                                train_time = train_info1 + "\n(" + train_info2;
+                                train_time = train_info1 + "\n(" + train_info2+")";
                                 plat_info = "["+plat_num+" - "+plat_dir+"칸]";
 
                                 seatinfo_time.setText(train_time);

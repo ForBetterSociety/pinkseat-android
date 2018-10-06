@@ -28,7 +28,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SubwayActivity" />
         <activity android:name=".SeatActivity" />
-        <activity android:name=".SubwayLineActivity" />
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".WebView.TrafficSubwayDetail" />
     </application>

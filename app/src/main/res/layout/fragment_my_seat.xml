@@ -95,7 +95,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2018년 01월 01일"
-                                android:textSize="17dp"
+                                android:textSize="20dp"
                                 android:textStyle="bold" />
 
                             <LinearLayout
@@ -108,8 +108,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
+                                    android:textStyle="bold"
                                     android:text="00:00\n(---행)"
                                     android:background="@color/colorEmptySeat"
+                                    android:textColor="@color/colorWhite"
                                     tools:ignore="HardcodedText" />
 
                                 <LinearLayout
@@ -161,7 +163,7 @@
                 <View
                     android:id="@+id/view_2"
                     android:layout_width="1dp"
-                    android:layout_height="60dp"
+                    android:layout_height="80dp"
                     android:layout_margin="5dp"
                     android:layout_toRightOf="@+id/lay_seatinfo"
                     android:background="@color/colorNormalSeat" />

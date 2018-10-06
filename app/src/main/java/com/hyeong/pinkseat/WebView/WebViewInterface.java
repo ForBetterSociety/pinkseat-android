@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 
-import kr.go.seoul.trafficsubway.TrafficSubwayInfoTypeB;
+import com.hyeong.pinkseat.SubwayActivity;
 
 public class WebViewInterface {
     private WebView mAppView;
@@ -22,7 +22,7 @@ public class WebViewInterface {
 
     @JavascriptInterface
     public void showSubwayInfo(String station) {
-        Intent intent = new Intent(this.mContext, TrafficSubwayInfoTypeB.class);
+        Intent intent = new Intent(this.mContext, SubwayActivity.class);
         intent.putExtra("OpenAPIKey", this.openAPIKey);
         intent.putExtra("SubwayLocationAPIKey", this.subwayLocationAPIKey);
         intent.putExtra("StationNM", station);

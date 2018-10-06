@@ -2,8 +2,8 @@ package com.hyeong.pinkseat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -52,6 +52,12 @@ public class SeatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat);
 
+//        getSupportActionBar().setTitle("좌석 현황");
+
+        //커스텀 바 설정
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.bar_seat);
+
         Intent intent_5 = getIntent(); //6번의 인텐트 수신
         train_info1 = intent_5.getStringExtra("train_info1");
         train_info2 = intent_5.getStringExtra("train_info2");
@@ -73,13 +79,13 @@ public class SeatActivity extends AppCompatActivity {
 
 
         /*** [뒤로가기 버튼 이벤트 설정] ***/
-        Button btn_Back = (Button) findViewById(R.id.btn_back);
-        btn_Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+//        Button btn_Back = (Button) findViewById(R.id.btn_back);
+//        btn_Back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                finish();
+//            }
+//        });
 
 
         //착석 불가 자리
@@ -228,7 +234,7 @@ public class SeatActivity extends AppCompatActivity {
                         intent4.putExtra("user_idx",idx);
                         intent4.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent4.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        Toast.makeText(getApplicationContext(), seat_num+"번 자리에 5분 내로 앉아주세요", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), seat_num+"번 자리가 예약되었습니다.", Toast.LENGTH_SHORT).show();
                         startActivity(intent4);
                     }
                 })
@@ -260,7 +266,7 @@ public class SeatActivity extends AppCompatActivity {
             btn.setBackgroundTintList(getResources().getColorStateList(R.color.colorEmptySeat));
         }
         else if(array[idx][0]==0 && array[idx][1]==1){
-            btn.setBackgroundTintList(getResources().getColorStateList(R.color.colorReservatedSeat));
+            btn.setBackgroundTintList(getResources().getColorStateList(R.color.colorFullSeat));
         }
         else{
             btn.setBackgroundTintList(getResources().getColorStateList(R.color.colorFullSeat));
