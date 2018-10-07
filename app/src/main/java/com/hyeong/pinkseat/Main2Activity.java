@@ -76,7 +76,7 @@ public class Main2Activity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
+       //getMenuInflater().inflate(R.menu.main2, menu);
 
         // [메뉴의 산모님 이름 변경]
         TextView menu_name = (TextView) findViewById(R.id.menu_name);
@@ -100,9 +100,9 @@ public class Main2Activity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -115,7 +115,7 @@ public class Main2Activity extends AppCompatActivity
 
         if (id == R.id.nav_main) {
             // Handle the camera action
-            getSupportActionBar().setTitle("메인");
+            getSupportActionBar().setTitle("PinkSeat");
             fragment = new SearchFragment();
 
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -129,7 +129,7 @@ public class Main2Activity extends AppCompatActivity
             Intent intent = new Intent(this, TrafficSubwayDetail.class);
             intent.putExtra("OpenAPIKey","7173524e7073687a3930737a47506a");
             startActivity(intent);
-            finish();
+
         } else if (id == R.id.nav_usage) {
             // Handle the camera action
             getSupportActionBar().setTitle("어플 이용법");

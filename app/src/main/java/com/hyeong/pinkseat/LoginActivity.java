@@ -37,6 +37,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //액션 바 설정
+        getSupportActionBar().hide();
 
         et_id = (EditText) findViewById(R.id.login_id);
         et_pw = (EditText) findViewById(R.id.login_pw);
@@ -82,11 +84,6 @@ public class LoginActivity extends AppCompatActivity {
             chk_auto.setChecked(true);
         }
 
-
-
-
-
-        getSupportActionBar().setTitle("임산부 인증");
 
         Button Login_ok = (Button) findViewById(R.id.login_ok);
         Button Join = (Button) findViewById(R.id.join);

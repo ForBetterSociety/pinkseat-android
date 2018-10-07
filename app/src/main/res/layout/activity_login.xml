@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.hyeong.pinkseat.LoginActivity">
+    tools:context="com.hyeong.pinkseat.LoginActivity"
+    android:background="@drawable/back">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <LinearLayout
@@ -17,120 +18,117 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginBottom="20dp">
+            android:orientation="vertical"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="110dp">
 
             <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/heart"/>
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/armchair"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBlack"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/colorWhite"
                 android:textSize="50dp"
                 android:text="PinkSeat"/>
         </LinearLayout>
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=" ID  :  "
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/login_id"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_text"
-                android:gravity="center"
-                android:textSize="20dp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:text=" Password  :  "
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/login_pw"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_text"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:inputType="textPassword"/>
-
-        </LinearLayout>
-<!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center">
-            <CheckBox
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/automatic_login"/>
+                android:orientation="horizontal">
 
-            <TextView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" ID  "
+                    android:textSize="30dp"
+                    android:textColor="@color/colorWhite"/>
+
+                <EditText
+                    android:id="@+id/login_id"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorWhite"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="자동로그인"/>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" PW "
+                    android:textSize="25dp"
+                    android:textColor="@color/colorWhite"/>
+
+                <EditText
+                    android:id="@+id/login_pw"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_text"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:inputType="textPassword"
+                    android:textColor="@color/colorWhite"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
 
-       </LinearLayout>
--->
 
         <CheckBox
             android:id="@+id/auto_login"
             android:text="자동 로그인"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:textColor="@color/colorWhite"
+            android:buttonTint="@color/colorWhite"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/join"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/ok_btn"
-                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorWhite"
+                android:textColor="@color/colorFullSeat"
+                android:layout_marginVertical="10dp"
                 android:text="JOIN"
                 android:textSize="20dp" />
 
             <Button
                 android:id="@+id/login_ok"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/ok_btn"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorWhite"
+                android:textColor="@color/colorFullSeat"
+                android:layout_marginLeft="45dp"
                 android:text="LOGIN"
-                android:textColor="@color/colorWhite"
+                android:layout_marginVertical="10dp"
                 android:textSize="20dp" />
 
 
