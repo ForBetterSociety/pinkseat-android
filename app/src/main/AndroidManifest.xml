@@ -12,14 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="adjustPan">
-        <activity android:name=".MainActivity"
-            android:label="회원가입"  />
+        <activity
+            android:name=".MainActivity"
+            android:label="회원가입" />
         <activity android:name=".ConfirmLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".JoinActivity" />
         <activity
@@ -28,8 +25,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SubwayActivity" />
         <activity android:name=".SeatActivity" />
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".WebView.TrafficSubwayDetail" />
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter
+            ></activity>
     </application>
 
 </manifest>
