@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanum_square_round_bb"
                 android:textSize="50dp"
                 android:text="PinkSeat"/>
         </LinearLayout>
@@ -50,12 +51,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" ID  "
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:textSize="30dp"
                     android:textColor="@color/colorWhite"/>
 
                 <EditText
                     android:id="@+id/login_id"
                     android:layout_width="150dp"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:layout_height="wrap_content"
                     android:background="@drawable/login_text"
                     android:gravity="center"
@@ -75,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" PW "
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:textSize="25dp"
                     android:textColor="@color/colorWhite"/>
 
@@ -82,6 +86,7 @@
                     android:id="@+id/login_pw"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:background="@drawable/login_text"
                     android:textSize="20dp"
                     android:gravity="center"
@@ -97,6 +102,7 @@
         <CheckBox
             android:id="@+id/auto_login"
             android:text="자동 로그인"
+            android:fontFamily="@font/nanum_square_round_r"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -106,7 +112,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -114,6 +120,7 @@
                 android:id="@+id/join"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanum_square_round_bb"
                 android:backgroundTint="@color/colorWhite"
                 android:textColor="@color/colorFullSeat"
                 android:layout_marginVertical="10dp"
@@ -124,6 +131,7 @@
                 android:id="@+id/login_ok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareround_bb"
                 android:backgroundTint="@color/colorWhite"
                 android:textColor="@color/colorFullSeat"
                 android:layout_marginLeft="45dp"

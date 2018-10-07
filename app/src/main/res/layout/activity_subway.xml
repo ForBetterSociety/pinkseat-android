@@ -111,17 +111,20 @@
             android:id="@+id/tx_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_b"
             android:text="승강장 번호 : "/>
         <Spinner
             android:id="@+id/spin_plat_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_r"
             android:layout_toRightOf="@id/tx_3">
         </Spinner>
         <TextView
             android:id="@+id/tx_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_b"
             android:text="구간 번호 : "
             android:layout_toRightOf="@+id/spin_plat_num"
             android:layout_marginLeft="10dp"/>
@@ -129,6 +132,7 @@
             android:id="@+id/spin_plat_section"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_r"
             android:layout_toRightOf="@id/tx_4">
         </Spinner>
     </RelativeLayout>
@@ -144,6 +148,7 @@
             android:id="@+id/btn_Ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_b"
             android:text="조회"
             android:layout_marginRight="60dp"
             android:textSize="20dp"
@@ -154,6 +159,7 @@
             android:id="@+id/btn_No"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_b"
             android:text="취소"
             android:layout_toRightOf="@+id/btn_Ok"
             android:textSize="20dp"

@@ -54,6 +54,7 @@
                 android:layoutDirection="rtl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareround_b"
                 android:text="임산부 배려석에 비임산부가 앉았어요!"
                 android:textSize="15dp"
                 android:checked="true"/>
@@ -63,6 +64,7 @@
                 android:layoutDirection="rtl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareround_b"
                 android:text="임산부 배려석 장치에 이상이 있어요!   "
                 android:textSize="15dp" />
             <RadioButton
@@ -71,6 +73,7 @@
                 android:layoutDirection="rtl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumsquareround_b"
                 android:text="어플이 작동하지 않아요!                       "
                 android:textSize="15dp" />
         </RadioGroup>
@@ -84,6 +87,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/ok_btn"
         android:text="신고"
+        android:fontFamily="@font/nanum_square_round_bb"
         android:textColor="@color/colorWhite"
         android:textSize="20dp" />
 

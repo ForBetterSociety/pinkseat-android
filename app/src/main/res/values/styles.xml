@@ -5,9 +5,11 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <item name="colorAccent">@color/colorPrimary</item>
          <!--<item name="android:textColorPrimary">@color/colorWhite</item>-->
+        <item name="android:fontFamily">@font/nanum_square_round_b</item>
    </style>
+
 
    <style name="AppTheme.NoActionBar">
        <item name="windowActionBar">false</item>

@@ -17,7 +17,7 @@
         android:id="@+id/imageView"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:src="@drawable/smile"
+        android:src="@drawable/user_icon"
         android:paddingTop="@dimen/nav_header_vertical_spacing" />
 
     <TextView
@@ -25,8 +25,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="OOO"
-        android:textColor="@color/colorEmptySeat"
+        android:textColor="@color/colorFullSeat"
         android:textSize="30dp"
+        android:fontFamily="@font/nanum_square_round_bb"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -35,8 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="산모님"
+        android:fontFamily="@font/nanumsquareround_b"
         android:textColor="@color/colorBlack"
-        android:textSize="25dp"
+        android:textSize="15sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
         <View

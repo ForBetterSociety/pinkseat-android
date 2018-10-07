@@ -20,6 +20,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_margin="10dp"
+           android:fontFamily="@font/nanumsquareround_bb"
            android:textSize="25dp"
            android:text="OOO 산모님"/>
 
@@ -33,6 +34,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanumsquareround_b"
                android:textSize="20dp"
                android:text="출산예정일 : "/>
 
@@ -40,6 +42,7 @@
                android:id="@+id/set_date"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanumsquareround_b"
                android:textSize="20dp"
                android:text="2018-03-21"/>
 
@@ -56,12 +59,14 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="20dp"
+               android:fontFamily="@font/nanumsquareround_b"
                android:text="산부인과명 : "/>
 
            <TextView
                android:id="@+id/set_hospital"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanumsquareround_b"
                android:textSize="20dp"
                android:text="바른산부인과"/>
 
@@ -77,6 +82,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanumsquareround_b"
                android:textSize="20dp"
                android:text="인증코드 : "/>
 
@@ -85,6 +91,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="20dp"
+               android:fontFamily="@font/nanumsquareround_b"
                android:textColor="@color/colorFullSeat"
                android:textStyle="bold"
                android:text="P0000001"/>
@@ -101,6 +108,7 @@
                android:id="@+id/btn_logout"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanum_square_round_bb"
                android:background="@drawable/ok_btn"
                android:textColor="@color/colorWhite"
                android:textSize="20dp"
@@ -111,6 +119,7 @@
                android:id="@+id/btn_delaccount"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:fontFamily="@font/nanum_square_round_bb"
                android:background="@drawable/ok_btn"
                android:text="인증해제"
                android:textSize="20dp"

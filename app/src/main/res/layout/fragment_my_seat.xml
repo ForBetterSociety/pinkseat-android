@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="좌석 정보"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:textSize="20dp"
 
                     android:layout_marginLeft="100dp"/>
@@ -49,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="착석 여부"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:textSize="20dp"
                     android:layout_marginLeft="70dp"/>
             </LinearLayout>
@@ -95,7 +97,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="2018년 01월 01일"
-                                android:textSize="20dp"
+                                android:fontFamily="@font/nanumsquareround_b"
+                                android:textSize="18dp"
                                 android:textStyle="bold" />
 
                             <LinearLayout
@@ -108,7 +111,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:textStyle="bold"
+                                    android:fontFamily="@font/nanumsquareround_r"
                                     android:text="00:00\n(---행)"
                                     android:background="@color/colorEmptySeat"
                                     android:textColor="@color/colorWhite"
@@ -127,6 +130,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:gravity="center"
+                                        android:fontFamily="@font/nanumsquareround_r"
                                         android:text="[0 - 0~0] 칸" />
 
                                     <LinearLayout
@@ -136,15 +140,17 @@
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:fontFamily="@font/nanumsquareround_r"
                                             android:text="좌석번호" />
 
                                         <TextView
                                             android:id="@+id/seatinfo_seatnum"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:textSize="12dp"
+                                            android:fontFamily="@font/nanumsquareround_r"
                                             android:text="P00"
-                                            android:textColor="@color/colorFullSeat"
-                                            android:textStyle="bold" />
+                                            android:textColor="@color/colorFullSeat" />
 
                                     </LinearLayout>
 
@@ -181,6 +187,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="미착석"
+                        android:fontFamily="@font/nanum_square_round_b"
                         android:textColor="@color/colorNormalSeat"
                         android:textSize="30dp"
                         android:textStyle="bold" />
@@ -208,6 +215,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ok_btn"
                 android:textColor="@color/colorWhite"
+                android:fontFamily="@font/nanum_square_round_bb"
                 android:textSize="20dp"
                 android:text="예약 취소" />
 
@@ -225,6 +233,7 @@
     <!--좌석 현황이 없을 시, 보여줄 화면 ("등록된 좌석이 없습니다.")-->
     <TextView
         android:id="@+id/empty_view"
-        style="@style/EmptyView" />
+        style="@style/EmptyView"
+        android:fontFamily="@font/nanumsquareround_b"/>
 
 </FrameLayout>

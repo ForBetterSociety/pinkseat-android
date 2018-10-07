@@ -35,9 +35,10 @@
             android:id="@+id/tv_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_square_round_bb"
+            android:layout_marginTop="10dp"
             android:text="abc12"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textSize="25dp" />
 
         <View
             android:layout_width="240dp"
@@ -59,6 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/nanum_square_round_b"
                 android:text="Name"
                 android:textSize="15dp"/>
 
@@ -67,9 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:fontFamily="@font/nanum_square_round_b"
                 android:text="김산모"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textSize="20dp" />
 
         </LinearLayout>
 
@@ -88,6 +90,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:layout_marginTop="10dp"
                     android:text="Reservation"
                     android:textSize="13dp"/>
@@ -96,6 +99,7 @@
                     android:id="@+id/tv_reservation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:layout_marginTop="12dp"
                     android:text="1"
                     android:textSize="20dp"
@@ -124,6 +128,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:text="Due Date"
                     android:textSize="15dp"/>
 
@@ -131,10 +136,10 @@
                     android:id="@+id/tv_dday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_b"
                     android:layout_marginTop="12dp"
                     android:text="2018.11.11"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
+                    android:textSize="20dp" />
 
             </LinearLayout>
 

@@ -113,6 +113,10 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+      /*  Typeface face;
+
+        face = Typeface.createFromAsset(getAssets(), "font.otf");
+*/
         if (id == R.id.nav_main) {
             // Handle the camera action
             getSupportActionBar().setTitle("PinkSeat");

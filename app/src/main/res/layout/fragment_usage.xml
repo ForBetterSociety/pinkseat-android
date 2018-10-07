@@ -20,6 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -33,15 +34,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Step1"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/nanum_square_round_bb"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:layout_marginLeft="10dp"
                     android:text="임산부 인증을 한다."
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -60,15 +63,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Step2"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/nanum_square_round_bb"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:text="탑승할 열차를 선택한다."
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
 
@@ -88,15 +93,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Step3"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/nanum_square_round_bb"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:layout_marginLeft="10dp"
                     android:text="좌석을 선택한다."
-                    android:textSize="20dp" />
+                    android:textSize="17dp" />
             </LinearLayout>
 
 
@@ -116,19 +123,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Step4"
-                    android:textSize="20dp"
+                    android:fontFamily="@font/nanum_square_round_bb"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumsquareround_b"
                     android:layout_marginLeft="10dp"
-                    android:text="예약한 좌석에 착석하면 끝!"
-                    android:textSize="20dp" />
+                    android:text="예약한 좌석에 착석한다."
+                    android:textSize="17dp" />
             </LinearLayout>
 
             <View
-                android:layout_width="100dp"
+                android:layout_width="150dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
@@ -137,16 +146,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanum_square_round_bb"
                     android:text="자주 묻는 질문"
                     android:textColor="@color/colorBlack"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:textStyle="bold" />
 
                 <LinearLayout
@@ -158,15 +168,17 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_square_round_b"
                         android:text="Q1. 다른 자리를 예약하고 싶어요"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_square_round_r"
                         android:text=":  예약취소 버튼을 통해 예약을 취소하시고,\n   다른 좌석을 다시 예약하시면 됩니다."
                         android:textColor="@color/colorPrimary"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </LinearLayout>
@@ -180,15 +192,17 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_square_round_b"
                         android:text="Q2. 인증을 취소하고 싶어요"
-                        android:textSize="20dp" />
+                        android:textSize="17dp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/nanum_square_round_r"
                         android:text=": 메뉴의 '설정' 에서 인증을 해제할 수 있습니다."
                         android:textColor="@color/colorPrimary"
-                        android:textSize="15dp" />
+                        android:textSize="13dp" />
 
 
                 </LinearLayout>
