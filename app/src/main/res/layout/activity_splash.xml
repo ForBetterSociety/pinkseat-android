@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.hyeong.pinkseat.SplashActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/gif_img"/>
+        android:background="@drawable/pinkseat_splash" />
 
 </LinearLayout>

@@ -111,6 +111,7 @@
             android:id="@+id/tx_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="13dp"
             android:fontFamily="@font/nanum_square_round_b"
             android:text="승강장 번호 : "/>
         <Spinner
@@ -124,6 +125,7 @@
             android:id="@+id/tx_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="13dp"
             android:fontFamily="@font/nanum_square_round_b"
             android:text="구간 번호 : "
             android:layout_toRightOf="@+id/spin_plat_num"
