@@ -50,8 +50,10 @@ public class SearchFragment extends Fragment {
         Intent intent = getActivity().getIntent();
         if(intent.getStringExtra("user_idx")==null){
             idx = AutoLoginPreference.getIdx(getActivity()).toString(); //자동 로그인으로 저장된 사용자의 정보를 받음
-        } else {idx = intent.getStringExtra("user_idx");
-        static_user_idx=idx;}
+            static_user_idx = idx;
+        } else {
+            idx = intent.getStringExtra("user_idx");
+            static_user_idx = idx;}
 
 
         Response.Listener<String> responseListener1 = new Response.Listener<String>() {

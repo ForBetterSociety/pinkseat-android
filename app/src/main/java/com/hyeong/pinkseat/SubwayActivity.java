@@ -163,7 +163,7 @@ public class SubwayActivity extends AppCompatActivity {
         Button btn_no = (Button) findViewById(R.id.btn_No);
 
         //사용자의 예약 여부 확인 (SeatActivity의 user_reservating을 변화시킴)
-//        yourReservating(Integer.parseInt(idx.toString()));
+        yourReservating(Integer.parseInt(idx.toString()));
 
         // 조회 Button 클릭 이벤트
         btn_ok.setOnClickListener(new View.OnClickListener() {

@@ -24,7 +24,7 @@
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumsquareround_b"
-            android:text=" ID :  "
+            android:text=" ID   "
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
         <EditText
@@ -49,7 +49,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" PW :  "
+            android:text=" PW   "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
@@ -76,7 +76,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" 이름 :  "
+            android:text=" 이름   "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
@@ -102,13 +102,13 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" 주민번호 :  "
+            android:text=" 주민번호   "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
         <EditText
             android:id="@+id/register_birth_et1"
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:background="@drawable/login_text"
@@ -129,7 +129,7 @@
             android:hint="2******"
             android:fontFamily="@font/nanumsquareround_b"
             android:gravity="center"
-            android:textSize="20dp"/>
+            android:textSize="18dp"/>
 
 
     </LinearLayout>
@@ -144,7 +144,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" 주소 :  "
+            android:text=" 주소   "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
@@ -168,7 +168,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" 출산예정일  :  "
+            android:text=" 출산예정일    "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
@@ -180,7 +180,7 @@
             android:gravity="center"
             android:fontFamily="@font/nanumsquareround_b"
             android:background="@drawable/login_text"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:inputType="date"
             android:maxLength="8" />
 
@@ -197,7 +197,7 @@
         <TextView
             android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text=" 산부인과명  :  "
+            android:text=" 산부인과명    "
             android:fontFamily="@font/nanumsquareround_b"
             android:textSize="20dp"
             android:textColor="@color/colorWhite"/>
